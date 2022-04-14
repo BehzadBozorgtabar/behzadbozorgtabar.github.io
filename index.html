@@ -1,988 +1,151 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<link rel="shortcut icon" href="myIcon.ico">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176302866-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-176302866-1');
+        </script>
+
+        <meta charset="utf-8">
+        <title>William Peebles</title>
+        <meta name="description" content="Project Page">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://use.typekit.net/oml3bsz.css">
+    </head>
+    <body>
+        <h1>
+            Behzad Bozorgtabar
+        </h1><br>
+        <h3> Computer Vision Group Leader & Lecturer at EPFL<br>
+          Senior Scientist at CIBM </h3><br>
+        <div class="row">
+            <div class="column-left">
+                <img class="me" src="images/Me.jpg" alt="Behzad Bozorgtabar"><br>
+                email: behzad.bozorgtabar [at] epfl [dot] ch
+            </div>
+            <!--<div class="column-right pxb">
+                <h1>THE PIXEL BENDING BLOG</h1>
+                <p>Welcome to the Pixel Bending mini-blog! Here, I'll talk about various topics related to synthesizing images,
+                    building deep generative models and more. Click the links below to access the posts:</p>
+                <a class="disentangle-button gradient-button" href="blog_posts/disentanglement.html">1. THE MAGIC OF DISENTANGLEMENT</>
+                <a class="hessian-button gradient-button">2. THE HESSIAN PENALTY</a>
+            </div>-->
+
+            <div class="column-right pxb">
+                <h1>RESEARCH UPDATES</h1>
+                <p>Check out our recent paper, OptTTA, the first learnable test-time augmentation policy for medical image segmentation.</p><br>
+                <a class="disentangle-button gradient-button" href="OptTTA.html">OptTTA</a>
+            </div>
+
+        </div>
+        <br>
+        <h2 style="background: linear-gradient(180deg, rgba(255,255,255,0) 65%, #ff8888 65%);">About Me</h2><br>
+
+        I'm a senior scientist at the Centre for Biomedical Imaging (CIBM), with the main affiliation with the Signal Processing Lab (LTS5) at the Swiss Federal Institute of Technology (EPFL), Lausanne, Switzerland.
+        I'm also affiliated with the Lausanne University Hospital (CHUV), Department of Radiology. I have been elected as a member of the <a href="https://ellis.eu/members"> European Lab for Learning & Intelligent Systems (ELLIS)</a>. At the CIBM and EPFL-LTS5, I am the computer vision leader for the medical imaging group.
+        Previously, I was a Postdoctoral Researcher at <a href="https://www.ibm.com/au-en/"> IBM Research-Australia</a>.</p>
+
+          <p> My research interests lie in the general area of machine learning, medical image analysis, and computer vision, particularly in deep representation learning, as well as their applications in domain adaptation/generalization and self-supervised learning.
+            My research's ultimate goal is to develop robust deep image representations that capture and understand the world, as well as our human eye and mind, do. Those representations will form the basic building block of downstream tasks in many vision-based applications.</p><br><br>
+        <h2 style="background: linear-gradient(180deg, rgba(255,255,255,0) 65%, #fffe8c 65%);">News</h2><br>
+
+        <!--<b>[July 2020]</b> I started a blog! It's called Pixel Bending, and I'll be discussing various things related to generative models.
+        The first two-part series is on disentanglement.<br>-->
+        <b>[Apr 2022]</b> Code for the OptTTA has been released in PyTorch <a href="https://github.com/devavratTomar/OptTTA"> here</a>.<br>
+        <b>[Mar 2022]</b> Our new paper, OptTTA, has received acceptance from MIDL 2022 for an oral presentation.<br>
+        <b>[Feb 2022]</b> Our new work, 'ScoreNet' on histopathological image classification, is on arXiv now!<br>
+        <b>[Feb 2022]</b> Our paper on multi-source domain adaptation for colorectal cancer tissue detection has received acceptance from Medical Image Analysis Journal.<br><br>
+
+       <h2 style="background: linear-gradient(180deg, rgba(255,255,255,0) 65%, #cd8cff 65%);">EPFL Computer Vision Talks</h2><br>
+       <p class="paper"><img src="images/TALKS.png"
+                             alt="EPFL CV Talks.">
+           <span><b>I am organizing the EPFL Computer Vision Talks.</b>
+       <br><a href="https://www.youtube.com/channel/UCAkp-rlUGYkpdIqmKezamWw/videos">YouTube Channel</a> &#183;</span></p>
+
+
+
+        <h2 style="background: linear-gradient(180deg, rgba(255,255,255,0) 65%, #93fc93 65%);">Recent Selected Publications</h2><br>
+
+
+              <p class="paper"><img src="images/optTTA.png"
+                              alt="OptTTA">
+            <span><b><font color="red">*New*</font> OptTTA: Learnable Test-Time Augmentation for <br>Source-Free Medical Image Segmentation Under Domain Shift</b>
+        <br>Devavrat Tomar, Guillaume Vray, Jean-Philippe Thiran, <b>Behzad Bozorgtabar</b>
+                <br>MIDL 2022 (Oral)
+                <br>   <a href="OptTTA.html">project page</a> &#183; <a href="https://openreview.net/pdf?id=B6HdQaY_iR">paper</a> &#183; <a href="https://github.com/devavratTomar/OptTTA">github</a></span></p>
+
+                <p class="paper"><img src="images/arXiv_2022.png"
+                                alt="ScoreNet">
+                <span><b><font color="red">*New*</font> ScoreNet: Learning Non-Uniform Attention and Augmentation for <br>Transformer-Based Histopathological Image Classification</b>
+                <br>Thomas Stegmüller, <b>Behzad Bozorgtabar</b>, Antoine Spahr, Jean-Philippe Thiran</b>
+                  <br>arXiv, 2022
+                  <br>  <a href="https://arxiv.org/pdf/2202.07570.pdf">paper</a>  </span></p>
+
+                  <p class="paper"><img src="images/SRMA.png"
+                                        alt="SRMA.">
+                      <span><b><font color="red">*New*</font> SRMA: Generalized Multi-source Feature Learning Using <br> Unsupervised Domain Adaptation for Colorectal Cancer Tissue Detection</b>
+                  <br>Christian Abbet, Linda Studer, Andreas Fischer, Heather Dawson, Inti Zlobec,<br>
+                  <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran
+                  <br>MedIA Journal 2022
+                  <br> <a href="https://arxiv.org/pdf/2108.09178.pdf">paper</a> &#183;
+                          <a href="https://github.com/christianabbet/SRA">github</a></span></p>
+
+                      <p class="paper"><img src="images/wacv_2022.png"
+                                                alt="SST.">
+                              <span><b>Self-Supervised Generative Style Transfer for One-Shot Medical Image Segmentation</b>
+                          <br>Devavrat Tomar, <b>Behzad Bozorgtabar</b>, Manana Lortkipanidze, Guillaume Vray, <br>Mohammad Saeed Rad, Jean-Philippe Thiran
+                          <br>WACV 2022
+                          <br> <a href="https://openaccess.thecvf.com/content/WACV2022/papers/Tomar_Self-Supervised_Generative_Style_Transfer_for_One-Shot_Medical_Image_Segmentation_WACV_2022_paper.pdf">paper</a> &#183;
+                                  <a href="https://github.com/devavratTomar/SST/">github</a></span></p>
 
-<meta name="keywords" content="Behzad Bozorgtabar, EPFL">
-<meta name="description" content="Behzad Bozorgtabar's home page">
-<meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg" />
-<meta name="google-site-verification" content="yy_3iiS_X6pJdegdwitJMrH0LRLHXwpjrV9RKLXxKjg" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css">
-<title>Behzad Bozorgtabar, EPFL</title>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-87320911-1', 'auto');
-  ga('send', 'pageview');
+<!-- <tr><center>
+        <p class="paper"><video loop autoplay muted>
+            <source src="images/hessian.mp4" type="video/mp4">
+        </video>
+            <span><b>The Hessian Penalty: A Weak Prior for Unsupervised Disentanglement</b>
+        <br>William Peebles, John Peebles, Jun-Yan Zhu, Alexei Efros, Antonio Torralba
+        <br>ECCV 2020 (Spotlight)
+                <br> <a href="https://youtu.be/uZyIcTkSSXA">video</a> &#183; <a href="https://youtu.be/jPl-0EN6S1w">overview in 90 seconds</a> &#183; <a href="hessian-penalty.html">project page</a> &#183; <a href="https://arxiv.org/abs/2008.10599">paper</a> &#183; <a href="https://github.com/wpeebles/hessian_penalty">github</a></span></p>
+                <!-- </center></tr> -->
 
-</script>
-</head>
-<body>
-<div id="layout-content" style="margin-top:25px">
- <a href="https://github.com/BehzadBozorgtabar" class="github-corner"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
-<table>
-	<tbody>
-		<tr>
-			<td width="670">
-				<div id="toptitle">
-					<h1>Behzad Bozorgtabar</h1><h1>
-				</h1></div>
 
-				<h3> Computer Vision Group Leader & Lecturer at EPFL<br>
-          Senior Scientist at CIBM </h3>
-				<p>
-          The Swiss Federal Institute of Technology (EPFL),<br>
-          Signal Processing Laboratory (LTS5) <br>
-          EPFL-STI-IEL-LTS5<br>
-          Station 11<br>
-          CH-1015 Lausanne<br>
-          Switzerland<br>
-					<br>
-					Email: behzad.bozorgtabar at epfl dot ch
+<!-- <tr><center>
+        <p class="paper"><img src="images/sig2019.png"
+                              alt="A natural image of a building is modified by adding trees and domes.">
+            <span><b>Semantic Photo Manipulation with a Generative Image Prior</b>
+        <br>David Bau, Hendrik Strobelt, William Peebles, Jonas Wulff, Bolei Zhou, Jun-Yan Zhu, Antonio Torralba
+        <br>SIGGRAPH 2019<br><a href="http://ganpaint.io/demo/?project=church">demo</a> &#183;
+        <a href="http://ganpaint.io/Bau_et_al_Semantic_Photo_Manipulation_preprint.pdf">paper</a> &#183;
+        <a href="http://ganpaint.io/">overview</a></span></p>
+<!-- </center></tr> -->
+    </body>
 
-				</p>
-				<p> <a href="https://scholar.google.com/citations?user=kxAk6AoAAAAJ"><img src="./pic/google_scholar.png" height="30px" style="margin-bottom:-3px"></a>
-					<a href="https://github.com/BehzadBozorgtabar"><img src="./pic/github_s.jpg" height="30px" style="margin-bottom:-3px"></a>
-          <a href="https://www.linkedin.com/in/behzad-bozorgtabar-72838560/"><img src="./pic/LinkedIn_s.png" height="30px" style="margin-bottom:-3px"></a>
-				</p>
-			</td>
-			<td>
-				<img src="./pic/BB.jpeg" border="0" width="200"><br>
-			</td>
-		</tr><tr>
-	</tr></tbody>
-</table>
+    <div id="footer">
+    	<div id="footer-text"></div>
+    </div>
+    	<p><center>
+          	<div id="clustrmaps-widget" style="width:10%">
 
-<h2>Biography</h2>
-<p>
-  I am a senior scientist at the Centre for Biomedical Imaging (CIBM), with the main affiliation with the Signal Processing Lab (LTS5) at the Swiss Federal Institute of Technology (EPFL), Lausanne, Switzerland.
-  I am also affiliated with the Lausanne University Hospital (CHUV), Department of Radiology. I have been elected as a member of the <a href="https://ellis.eu/members"> European Lab for Learning & Intelligent Systems (ELLIS)</a>. At the CIBM and EPFL-LTS5, I am the computer vision leader for the medical imaging group.
+              <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=s99PAjUbyKsvGkd9kZqSAJUKuVx8PqiTpvJ3gAQj7mA"></script>
+          		<noscript><a href='https://clustrmaps.com/site/xfn5'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=pT8r_ZMBBdBPTv7KnlTCiBDylmHyi1qsWdPpY_tIlqY'/></a></noscript>
 
-</p>
 
-<p>
-  My previous role as Post Doctoral Researcher at <a href="https://www.ibm.com/au-en/"> IBM Research-Australia</a> led to the development of novel deep learning-based medical image analysis methods leading to peer-reviewed scientific articles and patents.
 
+    <!--<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=UexA6kPrFZuJeB69B5BZyS063R_EhdDx6FAwAYiub2U&co=2d78ad&ct=ffffff&cmo=3acc3a&cmn=ff5353'></script>
+          		<noscript><a href='https://clustrmaps.com/site/1aa2l'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=UexA6kPrFZuJeB69B5BZyS063R_EhdDx6FAwAYiub2U&co=2d78ad&ct=ffffff'/></a></noscript> -->
+    	</div>
+    	<br>
+            &copy; Behzad Bozorgtabar | Last updated: April 14 2022
 
-</p>
+          </center></p>
 
 
-<p> My research interests lie in the general area of machine learning, medical image analysis, and computer vision, particularly in deep representation learning, as well as their applications in domain adaptation/generalization and self-supervised learning.
-  My research's ultimate goal is to develop robust deep image representations that capture and understand the world, as well as our human eye and mind, do. Those representations will form the basic building block of downstream tasks in many vision-based applications.</p>
-
-
-<h2>News</h2>
-<ul>
-  <li>
-    [3/2022] Our new paper, ‘OptTTA,’ the first learnable test-time augmentation policy for medical image segmentation, has received acceptance from MIDL 2022 for an oral presentation.
-    </li>
-    <li>
-    [2/2022] Our new work, 'ScoreNet' on histopathological image classification, is on arXiv now!
-    </li>
-  <li>
-    [2/2022] Our paper on multi-source domain adaptation for colorectal cancer tissue detection has received acceptance from Medical Image Analysis Journal.
-    </li>
-</ul>
-
-<h2>EPFL Computer Vision Talks </h2>
-
-<table id="tbtalks" width="90%">
-	<tbody>
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/TALKS.png" width="195px" height = "132" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td>I am organizing the EPFL computer vision reading group’s meetings, scheduling, and hosting virtual talks.
-<br>
-		[<a href="https://www.youtube.com/channel/UCAkp-rlUGYkpdIqmKezamWw/videos" target="_blank">YouTube Channel</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-    </tbody></table>
-
-
-<h2>Selected Publications (Since 2014) [<a href="https://scholar.google.com/citations?user=kxAk6AoAAAAJ">Google Scholar</a>]</h2>
-
-<table id="tbPublications" width="100%">
-	<tbody>
-    <tr>
-    <td width="206">
-		<img src="./indexpics/optTTA.png" width="200px" height = "120" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openreview.net/pdf?id=B6HdQaY_iR" target="_blank">OptTTA: Learnable Test-Time Augmentation for Source-Free Medical Image Segmentation Under Domain Shift.</a><br>
-    <font color="red">*New*</font><br>
-    Devavrat Tomar, Guillaume Vray, Jean-Philippe Thiran, <b>Behzad Bozorgtabar</b>.<br>
-    <p><em>The Medical Imaging with Deep Learning conference</em> (<i><b>MIDL</b></i>), (<i><b>Oral Presentation</b></i>), 2022. <br>
-		[<a href="https://openreview.net/pdf?id=B6HdQaY_iR" target="_blank">paper</a>] [<a href="https://github.com/devavratTomar/OptTTA" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-    <td width="206">
-		<img src="./indexpics/arXiv_2022.png" width="200px" height = "120" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://arxiv.org/pdf/2202.07570.pdf" target="_blank">ScoreNet: Learning Non-Uniform Attention and Augmentation for Transformer-Based Histopathological Image Classification.</a><br>
-    <font color="red">*New*</font><br>
-    Thomas Stegmüller, <b>Behzad Bozorgtabar</b>, Antoine Spahr, Jean-Philippe Thiran.<br>
-		[<a href="https://arxiv.org/pdf/2202.07570.pdf" target="_blank">arXiv, 2022</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/SRMA.png" width="200px" height = "120" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://arxiv.org/pdf/2108.09178.pdf" target="_blank">Self-Rule to Multi-Adapt: Generalized Multi-source Feature Learning Using Unsupervised Domain Adaptation for Colorectal Cancer Tissue Detection.</a><br>
-    <font color="red">*New*</font><br>
-    Christian Abbet, Linda Studer, Andreas Fischer, Heather Dawson, Inti Zlobec,
-    <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-    <p><em>Medical Image Analysis Journal</em> (<i><b>MEDIA</b></i>), 2022. <br>
-    [<a href="https://arxiv.org/pdf/2108.09178.pdf" target="_blank">arXiv</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-    <td width="206">
-		<img src="./indexpics/wacv_2022.png" width="200px" height = "120" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content/WACV2022/papers/Tomar_Self-Supervised_Generative_Style_Transfer_for_One-Shot_Medical_Image_Segmentation_WACV_2022_paper.pdf" target="_blank">Self-Supervised Generative Style Transfer for One-Shot Medical Image Segmentation.</a><br>
-    <font color="red">*New*</font><br>
-    Devavrat Tomar, <b>Behzad Bozorgtabar</b>, Manana Lortkipanidze, Guillaume Vray, Mohammad Saeed Rad, Jean-Philippe Thiran.
-    <p><em>Winter Conference on Applications of Computer Vision</em> (<i><b>WACV</b></i>), 2022. <br>
-		[<a href="https://openaccess.thecvf.com/content/WACV2022/papers/Tomar_Self-Supervised_Generative_Style_Transfer_for_One-Shot_Medical_Image_Segmentation_WACV_2022_paper.pdf" target="_blank">paper</a>] [<a href="https://github.com/devavratTomar/SST/" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-    <td width="206">
-		<img src="./indexpics/SegGini.png" width="190px" height = "125" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://arxiv.org/pdf/2103.03129.pdf" target="_blank">Learning Whole-Slide Segmentation from Inexact and Incomplete Labels using Tissue Graphs.</a><br>
-    Valentin Anklin, Pushpak Pati, Guillaume Jaume, <b>Behzad Bozorgtabar</b>, Antonio Foncubierta-Rodríguez, Jean-Philippe Thiran, Mathilde Sibony, Maria Gabrani, Orcun Goksel.
-    <p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2021. <br>
-		[<a href="https://link.springer.com/chapter/10.1007/978-3-030-87196-3_59" target="_blank">paper</a>] [<a href="https://github.com/histocartography/histocartography" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-    <td width="206">
-		<img src="./indexpics/SOoD.png" width="190px" height = "125" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content/ICCV2021W/CVAMD/papers/Bozorgtabar_SOoD_Self-Supervised_Out-of-Distribution_Detection_Under_Domain_Shift_for_Multi-Class_Colorectal_ICCVW_2021_paper.pdf" target="_blank">SOoD: Self-Supervised Out-of-Distribution Detection Under Domain Shift for Multi-Class Colorectal Cancer Tissue Types.</a><br>
-    <b>Behzad Bozorgtabar</b>, Guillaume Vray, Dwarikanath Mahapatra, Jean-Philippe Thiran.
-    <p><em>IEEE International Conference on Computer Vision Workshop ,</em> (<i><b>ICCVW</b></i>), 2021. <br>
-		[<a href="https://openaccess.thecvf.com/content/ICCV2021W/CVAMD/papers/Bozorgtabar_SOoD_Self-Supervised_Out-of-Distribution_Detection_Under_Domain_Shift_for_Multi-Class_Colorectal_ICCVW_2021_paper.pdf" target="_blank">paper</a>] [<a href="https://github.com/GuillaumeVray/SOoD" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-    <td width="206">
-		<img src="./indexpics/TTA_SR.png" width="190px" height = "125" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content/ICCV2021W/AIM/papers/Rad_Test-Time_Adaptation_for_Super-Resolution_You_Only_Need_to_Overfit_on_ICCVW_2021_paper.pdf" target="_blank">Test-Time Adaptation for Super-Resolution: You Only Need to Overfit on a Few More Images.</a><br>
-    Mohammad Saeed Rad, Thomas Yu, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-    <p><em>IEEE International Conference on Computer Vision Workshop ,</em> (<i><b>ICCVW</b></i>), 2021. <br>
-		[<a href="https://openaccess.thecvf.com/content/ICCV2021W/AIM/papers/Rad_Test-Time_Adaptation_for_Super-Resolution_You_Only_Need_to_Overfit_on_ICCVW_2021_paper.pdf" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/arxiv.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Jaume_Quantifying_Explainers_of_Graph_Neural_Networks_in_Computational_Pathology_CVPR_2021_paper.pdf" target="_blank">Quantifying Explainers of Graph Neural Networks in Computational Pathology.</a><br>
-		Guillaume Jaume, Pushpak Pati, <b>Behzad Bozorgtabar</b>, Antonio Foncubierta-Rodríguez, Florinda Feroce, Anna Maria Anniciello, Tilman Rau, Maria Gabrani, Jean-Philippe Thiran, Orcun Goksel.
-    <p><em>IEEE Conference on Computer Vision and Pattern Recognition</em> (<i><b>CVPR</b></i>), 2021. <br>
-		[<a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Jaume_Quantifying_Explainers_of_Graph_Neural_Networks_in_Computational_Pathology_CVPR_2021_paper.pdf" target="_blank">paper</a>] [<a href="https://github.com/histocartography/patho-quant-explainer" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/tmi.png" width="185px" height = "135" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="./indexpics/tmi.png" target="_blank">Self-Attentive Spatial Adaptive Normalization for Cross-Modality Domain Adaptation.</a><br>
-		Devavrat Tomar, Manana Lortkipanidze, Guillaume Vray, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-    <p><em>IEEE Transactions on Medical Imaging</em> (<i><b>T-MI</b></i>), 2021. <br>
-		[<a href="https://arxiv.org/pdf/2103.03781.pdf" target="_blank">paper</a>] [<a href="https://github.com/devavratTomar/sasan" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/midl.png" width="185px" height = "100" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="./indexpics/tmi.png" target="_blank">Self-Rule to Adapt: Learning Generalized Features from Sparsely-Labeled Data Using Unsupervised Domain Adaptation for Colorectal Cancer Tissue Phenotyping.</a><br>
-		Christian Abbet, Linda Studer, Andreas Fischer, Heather Dawson, Inti Zlobec,
-    <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-    <p><em>The Medical Imaging with Deep Learning conference</em> (<i><b>MIDL</b></i>), 2021. <br>
-		[<a href="https://2021.midl.io/proceedings/abbet21.pdf" target="_blank">paper</a>] [<a href="https://github.com/christianabbet/SRA" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/isbi2021.png" width="185px" height = "135" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="./indexpics/isbi2021.png" target="_blank">Self-Taught Semi-Supervised Anomaly Detection on Upper Limb X-rays.</a><br>
-		Antoine Spahr , <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-    <p><em>IEEE International Symposium on Biomedical Imaging</em> (<i><b>ISBI</b></i>), 2021. <br>
-		[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9433771" target="_blank">paper</a>][<a href="https://arxiv.org/pdf/2102.09895" target="_blank">arXiv</a>] [<a href="https://github.com/BehzadBozorgtabar/SELF-TAUGHT-SEMI-SUPERVISED-ANOMALY-DETECTION" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/wacv20.png" width="185px" height = "85" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content/WACV2021/papers/Rad_Benefiting_From_Bicubically_Down-Sampled_Images_for_Learning_Real-World_Image_Super-Resolution_WACV_2021_paper.pdf" target="_blank">Benefiting from Bicubically Down-Sampled Images for Learning Real-World Image Super-Resolution.</a><br>
-		Mohammad Saeed Rad, ..., <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-		<p><em>Winter Conference on Applications of Computer Vision</em> (<i><b>WACV</b></i>), 2021. <br>
-		[<a href="https://openaccess.thecvf.com/content/WACV2021/papers/Rad_Benefiting_From_Bicubically_Down-Sampled_Images_for_Learning_Real-World_Image_Super-Resolution_WACV_2021_paper.pdf" target="_blank">paper</a>][<a href="https://arxiv.org/pdf/2007.03053.pdf" target="_blank">arXiv</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/miccai20_1.png" width="185px" height = "120" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://link.springer.com/chapter/10.1007/978-3-030-59710-8_46" target="_blank">SALAD: Self-Supervised Aggregation Learning for Anomaly Detection on X-Rays.</a><br>
-		<b>Behzad Bozorgtabar</b>, Dwarikanath Mahapatra, Guillaume Vray, Jean-Philippe Thiran.
-		<p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2020. <br>
-		[<a href="https://link.springer.com/content/pdf/10.1007%2F978-3-030-59710-8_46.pdf" target="_blank">paper</a>] [<a href="https://github.com/GuillaumeVray/SALAD" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/miccai20_2.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://link.springer.com/chapter/10.1007%2F978-3-030-59722-1_46" target="_blank">Divide-and-Rule: Self- Supervised Learning for Survival Analysis in Colorectal Cancer.</a><br>
-		Christian Abbet, Inti Zlobec, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran.
-		<p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2020. <br>
-		[<a href="https://link.springer.com/chapter/10.1007%2F978-3-030-59722-1_46" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/miccai20_3.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://link.springer.com/chapter/10.1007/978-3-030-59722-1_30" target="_blank">Structure Preserving Stain Normalization of Histopathology Images Using Self-Supervised Semantic Guidance.</a><br>
-		Dwarikanath Mahapatra, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran, Ling Shao.
-		<p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2020. <br>
-		[<a href="https://link.springer.com/chapter/10.1007/978-3-030-59722-1_30" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/cvpr20.png" width="185px" height = "110" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Mahapatra_Pathological_Retinal_Region_Segmentation_From_OCT_Images_Using_Geometric_Relation_CVPR_2020_paper.pdf" target="_blank">Pathological Retinal Region Segmentation From OCT Images Using Geometric Relation Based Augmentation.</a><br>
-		Dwarikanath Mahapatra, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran, Ling Shao.
-		<p><em>IEEE Conference on Computer Vision and Pattern Recognition</em> (<i><b>CVPR</b></i>), 2020. <br>
-		[<a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Mahapatra_Pathological_Retinal_Region_Segmentation_From_OCT_Images_Using_Geometric_Relation_CVPR_2020_paper.pdf" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/pr.png" width="185px" height = "165" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://www.sciencedirect.com/science/article/pii/S0031320319304121?dgcid=author#!" target="_blank">ExprADA: Adversarial Domain Adaptation for Facial Expression Analysis.</a><br>
-		<b>Behzad Bozorgtabar</b>, Dwarikanath Mahapatra, Jean-Philippe Thiran.
-		<p><em>Elsevier Pattern Recognition Journal</em> (<i><b>PR</b></i>), 2020. <br>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S0031320319304121?dgcid=author#!" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/syndemo.png" width="185px" height = "110" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Bozorgtabar_SynDeMo_Synergistic_Deep_Feature_Alignment_for_Joint_Learning_of_Depth_ICCV_2019_paper.pdf" target="_blank">SynDeMo: Synergistic Deep Feature Alignment for Joint Learning of Depth and Ego-Motion.</a><br>
-		<b>Behzad Bozorgtabar</b>, Mohammad Saeed Rad, Dwarikanath Mahapatra, Jean-Philippe Thiran.
-		<p><em>IEEE International Conference on Computer Vision</em> (<i><b>ICCV</b></i>), 2019. <br>
-		[<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Bozorgtabar_SynDeMo_Synergistic_Deep_Feature_Alignment_for_Joint_Learning_of_Depth_ICCV_2019_paper.pdf" target="_blank">paper</a>] [<a href="http://openaccess.thecvf.com/content_ICCV_2019/supplemental/Bozorgtabar_SynDeMo_Synergistic_Deep_ICCV_2019_supplemental.pdf" target="_blank"><font color="red">supplementary material</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/srobb.png" width="185px" height = "110" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Rad_SROBB_Targeted_Perceptual_Loss_for_Single_Image_Super-Resolution_ICCV_2019_paper.pdf" target="_blank">SROBB: Targeted Perceptual Loss for Single Image Super-Resolution.</a><br>
-		Mohammad Saeed Rad, <b>Behzad Bozorgtabar</b>, Urs-Viktor Marti, Max Basler, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>IEEE International Conference on Computer Vision</em> (<i><b>ICCV</b></i>), 2019. <br>
-		[<a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Rad_SROBB_Targeted_Perceptual_Loss_for_Single_Image_Super-Resolution_ICCV_2019_paper.pdf" target="_blank">paper</a>][<a href="http://openaccess.thecvf.com/content_ICCV_2019/supplemental/Rad_SROBB_Targeted_Perceptual_ICCV_2019_supplemental.pdf" target="_blank"><font color="red">supplementary material</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/fg19.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8756632" target="_blank">Using Photorealistic Face Synthesis and Domain Adaptation to Improve Facial Expression Analysis.</a><br>
-		<b>Behzad Bozorgtabar</b>, Mohammad Saeed Rad, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>IEEE International Conference on Automatic Face and Gesture Recognition</em> (<i><b>FG</b></i>), 2019. <br>
-		[<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8756632" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/cviu19.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://www.sciencedirect.com/science/article/pii/S107731421930061X" target="_blank">Informative Sample Generation Using Class Aware Generative Adversarial Networks for Classification of Chest Xrays.</a><br>
-		<b>Behzad Bozorgtabar</b>, Dwarikanath Mahapatra, ..., Jean-Philippe Thiran, Mauricio Reyes.
-		<p><em>Journal of Computer Vision and Image Understanding</em> (<i><b>CVIU</b></i>), 2019. <br>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S107731421930061X" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/cvprw19.png" width="185px" height = "115" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/Biometrics/Aghdam_Exploring_Factors_for_Improving_Low_Resolution_Face_Recognition_CVPRW_2019_paper.pdf" target="_blank">Exploring Factors for Improving Low Resolution Face Recognition.</a><br>
-		Omid Abdollahi Aghdam, <b>Behzad Bozorgtabar</b>, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>Computer Vision and Pattern Recognition Workshop</em> (<i><b>CVPR</b></i>), 2019. <br>
-		[<a href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/Biometrics/Aghdam_Exploring_Factors_for_Improving_Low_Resolution_Face_Recognition_CVPRW_2019_paper.pdf" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/neurocomputing.jpg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://arxiv.org/pdf/1907.12488.pdf" target="_blank">Benefiting from Multitask Learning to Improve Single Image Super-Resolution.</a><br>
-		Mohammad Saeed Rad, <b>Behzad Bozorgtabar</b>, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>Elsevier Neurocomputing Journal</em>, 2019. <br>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S0925231219314638?via%3Dihub" target="_blank">paper</a>][<a href="https://arxiv.org/pdf/1907.12488.pdf" target="_blank">arXiv</a>]
-
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/l2s19.jpg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://www.sciencedirect.com/science/article/pii/S1077314219300657?via%3Dihub" target="_blank">Learn to Synthesize and Synthesize to Learn.</a><br>
-		<b>Behzad Bozorgtabar</b>, Mohammad Saeed Rad, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>Journal of Computer Vision and Image Understanding</em> (<i><b>CVIU</b></i>), 2019. <br>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S1077314219300657?via%3Dihub" target="_blank">paper</a>] [<a href="https://github.com/BehzadBozorgtabar/Learn-to-Synthesize-and-Synthesize-to-Learn" target="_blank"><font color="red">code/models</font></a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/dnet.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://jivp-eurasipjournals.springeropen.com/track/pdf/10.1186/s13640-019-0467-y" target="_blank">DermoNet: Densely Linked Convolutional Neural Network for Efficient Skin Lesion Segmentation.</a><br>
-		Saleh Bagher Salimi, <b>Behzad Bozorgtabar</b>, Philippe Schmid-Saugeon, Hazım Kemal Ekenel, Jean-Philippe Thiran.
-		<p><em>EURASIP Journal on Image and Video Processing</em> (<i><b>JIVP</b></i>), 2019. <br>
-		[<a href="https://jivp-eurasipjournals.springeropen.com/track/pdf/10.1186/s13640-019-0467-y" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/NeurIPS18.png" width="185px" height = "80" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://arxiv.org/pdf/1811.03830.pdf" target="_blank">Image-Level Attentional Context Modeling Using Nested-Graph Neural Networks.</a><br>
-		Guillaume Jaume, <b>Behzad Bozorgtabar</b>, Hazım Kemal Ekenel, Jean-Philippe Thiran, Maria Gabrani.
-		<p><em>Neural Information Processing Systems Workshop</em> (<i><b>NeurIPS</b></i>), 2018. <br>
-		[<a href="https://arxiv.org/pdf/1811.03830.pdf" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/pgan.jpg" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://www.sciencedirect.com/science/article/pii/S0895611118305871?dgcid=coauthor" target="_blank">Image Super-Resolution Using Progressive Generative Adversarial Networks for Medical Image Analysis.</a><br>
-		Dwarikanath Mahapatra, <b>Behzad Bozorgtabar</b>.
-		<p><em>Journal of Computerized Medical Imaging and Graphics</em>, 2018. <br>
-		[<a href="https://www.sciencedirect.com/science/article/pii/S0895611118305871?dgcid=coauthor" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/miccai18.png" width="185px" height = "90" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://arxiv.org/pdf/1806.05473.pdf" target="_blank">Efficient Active Learning for Image Classification and Segmentation using a Sample Selection and Conditional Generative Adversarial Network.</a><br>
-		Dwarikanath Mahapatra, <b>Behzad Bozorgtabar</b>, Jean-Philippe Thiran, Mauricio Reyes.
-		<p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2018. <br>
-		[<a href="https://arxiv.org/pdf/1806.05473.pdf" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-		<td width="206">
-		<img src="./indexpics/miccai17.png" width="185px" height = "55" style="box-shadow: 4px 4px 8px #888">
-		</td>
-		<td><a href="https://link.springer.com/chapter/10.1007/978-3-319-66179-7_44" target="_blank">Image Super Resolution Using Generative Adversarial Networks and Local Saliency Maps for Retinal Image Analysis.</a><br>
-		Dwarikanath Mahapatra, <b>Behzad Bozorgtabar</b>, Rahil Garnavi.
-		<p><em>Medical Image Computing and Computer Assisted Intervention</em> (<i><b>MICCAI</b></i>), 2017. <br>
-		[<a href="https://link.springer.com/chapter/10.1007/978-3-319-66179-7_44" target="_blank">paper</a>]
-		</td>
-	</tr>
-	<tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/msmct.png" width="185px" height = "100" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8048028" target="_blank">MSMCT: Multi-State Multi-Camera Tracker.</a><br>
-    <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>IEEE Transactions on Circuits and Systems for Video Technology</em> (<i><b>TCSVT</b></i>), 2017. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8048028" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/isbi17_1.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950514" target="_blank">Investigating Deep Side Layers For Skin Lesion Segmentation.</a><br>
-    <b>Behzad Bozorgtabar</b>, Zongyuan Ge, Rajib Chakravorty, Mani Abedini, Sergey Demyanov, Rahil Garnavi.
-    <p><em>IEEE International Symposium on Biomedical Imaging</em> (<i><b>ISBI</b></i>), 2017. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950514" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/isbi17_2.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950521" target="_blank">Tree-Loss Function for Training Neural Networks on Weakly-Labeled Datasets.</a><br>
-      Sergey Demyanov, Rajib Chakravorty, Zongyuan Ge, <b>Behzad Bozorgtabar</b>, Adrian Bowling, Rahil Garnavi.
-    <p><em>IEEE International Symposium on Biomedical Imaging</em> (<i><b>ISBI</b></i>), 2017. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950521" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/isbi17_3.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950681" target="_blank">Exploiting Local and Generic Features for Skin Lesions Classification.</a><br>
-      Zongyuan Ge, <b>Behzad Bozorgtabar</b>, Sergey Demyanov, Mani Abedini, Rajib Chakravorty, Adrian Bowling, Rahil Garnavi.
-    <p><em>IEEE International Symposium on Biomedical Imaging</em> (<i><b>ISBI</b></i>), 2017. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7950681" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/cviu16.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://www.sciencedirect.com/science/article/abs/pii/S107731421500257X" target="_blank">Efficient Multi-Target Tracking via Discovering Dense Subgraphs.</a><br>
-      <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>Journal of Computer Vision and Image Understanding</em> (<i><b>CVIU</b></i>), 2016. <br>
-    [<a href="https://www.sciencedirect.com/science/article/abs/pii/S107731421500257X" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/mlmi16.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://link.springer.com/content/pdf/10.1007/978-3-319-47157-0_31.pdf" target="_blank">Sparse Coding Based Skin Lesion Segmentation Using Dynamic Rule-Based Refinement.</a><br>
-      <b>Behzad Bozorgtabar</b>, Mani Abedini, Rahil Garnavi.
-    <p><em>Machine Learning in Medical Imaging</em> (<i><b>MLMI</b></i>), 2016. <br>
-    [<a href="https://link.springer.com/content/pdf/10.1007/978-3-319-47157-0_31.pdf" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/icip15.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7351354" target="_blank">Multi-level Action Detection via Learning Latent Structure.</a><br>
-      <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>IEEE International Conference on Image Processing</em> (<i><b>ICIP</b></i>), 2015. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7351354" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/icip14.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7025998" target="_blank">Joint Sparsity-Based Robust Visual Tracking.</a><br>
-      <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>IEEE International Conference on Image Processing</em> (<i><b>ICIP</b></i>), 2014. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7025998" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/accv14.png" width="185px" height = "95" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://link.springer.com/chapter/10.1007/978-3-319-16814-2_37" target="_blank">Enhanced Laplacian Group Sparse Learning with Lifespan Outlier Rejection for Visual Tracking.</a><br>
-      <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>Asia Conference on Computer Vision</em> (<i><b>ACCV</b></i>), 2014. <br>
-    [<a href="https://link.springer.com/chapter/10.1007/978-3-319-16814-2_37" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    <tr>
-    <td width="206">
-    <img src="./indexpics/dicta14.png" width="185px" height = "100" style="box-shadow: 4px 4px 8px #888">
-    </td>
-    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7008129" target="_blank">Robust Visual Tracking via Rank-Constrained Sparse
-Learning.</a><br>
-      <b>Behzad Bozorgtabar</b>, Roland Goecke.
-    <p><em>Digital Image Computing: Techniques and Applications</em> (<i><b>DICTA</b></i>), 2014. <br>
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7008129" target="_blank">paper</a>]
-    </td>
-  </tr>
-  <tr></tr>
-    <tr></tr>
-    <tr></tr>
-
-
-
-    </tbody></table>
-
-
-    <h2>Patents</h2>
-    <table style="border-spacing:2px">
-    		<tbody>
-          <tr>
-          	    <td> <b>Automated Skin Lesion Segmentation Using Deep Side Layers</b><br>
-          		lead inventor: <b>Behzad Bozorgtabar</b><br>
-          		<i>Published with United States Patent and Trademark office as patent number US10373312B2</i><br>
-                  </td>
-          </tr>
-          <tr>
-          	    <td> <b>Skin Lesion Segmentation Using Deep Convolution Networks Guided By Local Unsupervised Learning</b><br>
-          		lead inventor: <b>Behzad Bozorgtabar</b><br>
-          		<i>Published with United States Patent and Trademark office as patent number US10223788B2</i><br>
-                  </td>
-          </tr>
-          <tr>
-        	    <td><b>Structure-Preserving Composite Model for Skin Lesion Segmentation</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Published with United States Patent and Trademark office as patent number US10176574B2</i><br>
-                </td>
-              </tr>
-        		<tr>
-        	    <td><b>Risk Assessment Based on Patient Similarity Determined Using Image Analysis</b><br>
-        		<b>Behzad Bozorgtabar</b><br>
-        		<i>Published with United States Patent and Trademark office as patent number US10283221B2</i><br>
-                </td>
-              </tr>
-        	<tr>
-        	    <td><b>Searching Trees: A New System for Live Time-lapse Cell Tracking and Cell Progression</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Published with United States Patent and Trademark office as patent number US10510150B2</i><br>
-                </td>
-              </tr>
-        <tr>
-        	    <td><b>Real-Time Annotation of Symptoms in Telemedicine</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Published with United States Patent and Trademark office as patent number US20190328300A1</i><br>
-                </td>
-              </tr>
-        <tr>
-                  	    <td><b>System And Method For Image Modality Conversion and Domain Adaptation</b><br>
-                  		<i>Filed with International Bureau of WIPO as a PCT patent application with Applicaion No. PCT-IB2021-051376</i><br>
-                          </td>
-                        </tr>
-        <tr>
-            	    <td><b>Annotation-Efficient Image Anomaly Detection</b><br>
-            		lead inventor: <b>Behzad Bozorgtabar</b><br>
-            		<i>Filed with International Bureau of WIPO as a PCT patent application with Applicaion No. PCT-IB2021-050753</i><br>
-                    </td>
-                  </tr>
-        	<tr>
-        	    <td><b>Superpixel Flow: Label Propagation System Helps Deep Learning for Accurate Segmentation</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Filed with United States Patent and Trademark office as docket YOR8-2016-1660</i><br>
-                </td>
-              </tr>
-        	<tr>
-        	    <td><b>Automatic Pattern Discovery for Skin Disease Classification</b><br>
-        		<b>Behzad Bozorgtabar</b><br>
-        		<i>Filed with United States Patent and Trademark office as docket YOR8-2016-2258</i><br>
-                </td>
-              </tr>
-
-        	<tr>
-        	    <td><b>Second Face: Combating Depression Through Virtual Reality</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Under Review YOR8-2016-2652</i><br>
-                </td>
-              </tr>
-        <tr>
-        	    <td><b>Quantifying the Symptoms of Brain Disorders Via Facial, Body Posture and Language Analytics</b><br>
-        		lead inventor: <b>Behzad Bozorgtabar</b><br>
-        		<i>Under Review YOR820162998CN01</i><br>
-                </td>
-              </tr>
-    	</tbody>
-    </table>
-
-
-    <h2>Honors, Awards, Leadership</h2>
-    <table style="border-spacing:2px">
-
-    		<tbody>
-        <tr><td> Elected as a member of the European Lab for Learning Intelligent Systems (ELLIS), 2021</td></tr>
-        <tr><td> ADAS &amp; Me Project Leadership, EPFL, Horizon 2020, 2017- 2019</td></tr>
-    		<tr><td> IBM Research Division Image Award, Melbourne, Australia, 2017</td></tr>
-        <tr><td> IBM First Patent Award, Melbourne, Australia, 2017</td></tr>
-    		<tr><td> Imagine Cup, Australian Finals, Microsoft, Sydney, Australia, 2014</td></tr>
-    		<tr><td> International Postgraduate Research Scholarship (IPRS), University of Canberra, Australia, 2012</td></tr>
-    	</tbody>
-    </table>
-
-
-    <!--
-    <tr><td> Organizer <a href="http://fa4adas.epfl.ch/"> FG 2019 Workshop on Face Analysis for Advanced Driver Assistance Systems (FA4ADAS)</a>, 2019 </td></tr>
-    <tr><td> ADAS &amp; Me Project Leadership, EPFL, Horizon 2020, 2017- 2019</td></tr>
-    <tr><td> National Scholarship for Master's Degree, 2008</td></tr>
-    <tr><td> Placed Third in Advanced Science Contest in Province, Placed First in the City, 2002</td></tr>
-    -->
-
-    <h2>Organization of Scientific Meetings &amp; PC Membership</h2>
-    <table style="border-spacing:2px">
-
-        <tbody>
-          <tr><td> PC Member <a href="https://sites.google.com/view/cvamd2021/program-committee?authuser=0"> ICCV 2021 Workshop on Computer Vision for Automated Medical Diagnosis (CVAMD)</a>, 2021 </td></tr>
-          <tr><td> Associate Editor <a href="https://www.frontiersin.org/journals/medicine"> Frontiers in Medicine </a>, 2021 </td></tr>
-        <tr><td> Organizer <a href="http://fa4adas.epfl.ch/"> FG 2019 Workshop on Face Analysis for Advanced Driver Assistance Systems (FA4ADAS)</a>, 2019 </td></tr>
-      </tbody>
-    </table>
-
-    <h2>Grants</h2>
-    <table style="border-spacing:2px">
-
-    		<tbody>
-        	<tr><td> Personalized Health and Related Technologies (PHRT), 2018-Present</td></tr>
-    		<tr><td> Swiss Cancer League, 2018-Present</td></tr>
-    		<tr><td> Discovery Translation Fund (DTF 2.0), 2015</td></tr>
-    	</tbody>
-    </table>
-
-    <h2>Invited Speaker</h2>
-    <table style="border-spacing:2px">
-
-    		<tbody>
-        	<tr><td> Huawei France Future Image Signal Processing Workshop, Nice, France, 2020</td></tr>
-    		<tr><td> The Emerging Sensing Technologies Summit 2016 (ESTS’16), Melbourne, Australia, 2016</td></tr>
-    	</tbody>
-    </table>
-<!-- <h2>Rest </h2>
-
-
-</tbody></table>-->
-
-<h2>Work Experience</h2>
-<ul>
-	<li>
-		<div style="float:left; text-align:left">IBM Research, Melbourne, Australia. </div> <div style="float:right; text-align:right">2016 – 2017</div><br>
-		Postdoctoral Fellow<br>
-		Project: Skin Cancer Image Processing<br>
-	</li>
-	<li>
-		<div style="float:left; text-align:left">University of Canberra, Canberra, Australia. </div> <div style="float:right; text-align:right">2014 – 2016</div><br>
-		Research Assistant<br>
-	</li>
-</ul>
-
-
-
-
-<h2>Professional Activities</h2>
-<li>
-	<b>Networks:</b>
-	<br>
-  IBM Research Zurich, Switzerland <br>
-	University of Bern, Switzerland<br>
-  Institute of Pathology, Bern, Switzerland <br>
-	Inception Institute of Artificial Intelligence, UAE<br>
-	<p style="margin-top:3px"></p>
-</li>
-
-<li>
-	<b>Membership:</b>
-  <br>
-  ELLIS <br>
-	IEEE <br>
-	<p style="margin-top:3px"></p>
-</li>
-
-<li>
-	<b>Grants Reviews:</b>
-	<br>
-	The Dutch Research Council (NWO), Veni Grant <br>
-	<p style="margin-top:3px"></p>
-</li>
-
-
-<li>
-	<b>Conference Reviews:</b>
-	<br>
-	IEEE Conference on Computer Vision and Pattern Recognition (CVPR) <br>
-  International Conference on Computer Vision (ICCV) <br>
-  European Conference on Computer Vision (ECCV) <br>
-	International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)<br>
-	IEEE Winter Conference on Applications of Computer Vision (WACV)<br>
-	<p style="margin-top:3px"></p>
-</li>
-
-<li>
-<b>Journal Reviews:</b>
-	<br>
-	IEEE Transactions on Medical Imaging (T-MI)<br>
-	IEEE Transactions on Image Processing (TIP)<br>
-	Elsevier Journal of Computer Vision and Image Understanding (CVIU)<br>
-	Elsevier Journal of the Pattern Recognition (PR)<br>
-	Medical Image Analysis (MedIA)
-	<p style="margin-top:3px"></p>
-</li>
-
-
-<h2>Teaching</h2>
-<table id="tbTeaching" border="0" width="100%">
-	<tbody>
-		<tr>
-			<td> 2019-present</td><td>Image analysis and pattern recognition (EE-451-4 ECTS- Bozorgtabar &
-Thiran), EPFL </td>
-		</tr>
-		<tr>
-			<td> 2019-present</td><td>Lab in signal and image processing (EE-490(f)-4 ECTS- Bozorgtabar & Thiran), EPFL</td>
-		</tr>
-
-	</tbody>
-</table>
-
-<!--
-<li>
-  [12/2021] The source code of our work on anomaly detection 'SALAD' has been released.
-  </li>
-<li>
-  [10/2021] Our paper on one-shot medical image segmentation has received acceptance from WACV 2022.
-  </li>
-<li>
-[9/2021] I have been elected as a member of the European Lab for Learning & Intelligent Systems (ELLIS).
-</li>
-<li>
-[8/2021] one paper has received acceptance from AIM Workshop at ICCV 2021.
-</li>
-<li>
-[8/2021] Two papers have received acceptance from ICCVW 2021.
-</li>
-<a href="./pic/Behzad.pdf"><img src="./pic/cv_s.png" height="30px" style="margin-bottom:-3px"></a>
-<li>
-  [3/2022] Our new paper, ‘optTTA,’ the first learnable test-time augmentation policy for medical image segmentation, has received acceptance from MIDL 2022.
-  </li>
-<li>
--->
-
-<div id="footer">
-	<div id="footer-text"></div>
-</div>
-	<p><center>
-      	<div id="clustrmaps-widget" style="width:10%">
-
-          <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=s99PAjUbyKsvGkd9kZqSAJUKuVx8PqiTpvJ3gAQj7mA"></script>
-      		<noscript><a href='https://clustrmaps.com/site/xfn5'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=pT8r_ZMBBdBPTv7KnlTCiBDylmHyi1qsWdPpY_tIlqY'/></a></noscript>
-
-
-
-<!--<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=UexA6kPrFZuJeB69B5BZyS063R_EhdDx6FAwAYiub2U&co=2d78ad&ct=ffffff&cmo=3acc3a&cmn=ff5353'></script>
-      		<noscript><a href='https://clustrmaps.com/site/1aa2l'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=UexA6kPrFZuJeB69B5BZyS063R_EhdDx6FAwAYiub2U&co=2d78ad&ct=ffffff'/></a></noscript> -->
-	</div>
-	<br>
-        &copy; Behzad Bozorgtabar | Last updated: March 21 2022
-
-      </center></p>
-
-
-</div>
-</body></html>
+    </div>
+</html>

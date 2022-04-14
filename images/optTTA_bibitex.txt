@@ -1,0 +1,8 @@
+@inproceedings{tomar2021opttta,
+  title={OptTTA: Learnable Test-Time Augmentation for Source-Free Medical Image Segmentation Under Domain Shift},
+  author={Tomar, Devavrat and Vray, Guillaume and Thiran, Jean-Philippe and Bozorgtabar, Behzad},
+  booktitle={Medical Imaging with Deep Learning},
+  year={2022}
+}
+
+
