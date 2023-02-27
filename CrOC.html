@@ -1,0 +1,494 @@
+<!--This HTML is based on Taesung Park's project page. Code from w3schools was also used.-->
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+    h1 {
+        font-weight:300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.rounded {
+        border: 0px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    a:link,a:visited
+    {
+        color: #1367a7;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .res_wrapper{
+        text-align: center;
+        float: left;
+        margin-left: 3px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                15px 15px 0 0px #fff, /* The fourth layer */
+                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                20px 20px 0 0px #fff, /* The fifth layer */
+                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                25px 25px 0 0px #fff, /* The fifth layer */
+                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+    .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr
+    {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+
+    .collapsible {
+        background-color: #777;
+        color: white;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 20px;
+    }
+
+    .active, .collapsible:hover {
+        background-color: #555;
+    }
+
+    .collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .content {
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+</style>
+
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176302866-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-176302866-1');
+    </script>
+
+    <title>CrOC: Cross-View Online Clustering for Dense Visual Representation Learning</title>
+    <meta property="og:image" content="" />
+    <meta property="og:title" content="CrOC: Cross-View Online Clustering for Dense Visual Representation Learning. In CVPR, 2023." />
+</head>
+
+<body>
+<br>
+<center>
+    <span style="font-size:38px"> <img style="width:100px; height:100px;" class="middle" src="images/Crocodile.gif"><br> CrOC: Cross-View Online Clustering for Dense Visual Representation Learning</span><br>
+    <table align=center width=1100px>
+        <tr>
+            <td align=center width=275px>
+                <span style="font-size:24px"><a href="https://people.epfl.ch/thomas.stegmuller?lang=en">Thomas Stegmüller</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:24px"><a href="https://www.timlebailly.com/">Tim Lebailly</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:24px"><a href="https://behzadbozorgtabar.com/">Behzad Bozorgtabar</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:24px"><a href="https://homes.esat.kuleuven.be/~tuytelaa/">Tinne Tuytelaars</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="font-size:24px"><a href="https://people.epfl.ch/jean-philippe.thiran">Jean-Philippe Thiran</a></span>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=700px>
+        <tr>
+            <td align=center width=10px>
+                <center>
+                    <span style="font-size:20px"></span>
+                </center>
+            </td>
+            <td align=center width=225px>
+                <center>
+                    <span style="font-size:24px">EPFL</span>
+                </center>
+            </td>
+            <td align=center width=225px>
+                <center>
+                    <span style="font-size:24px">KU Leuven</span>
+                </center>
+            </td>
+            <td align=center width=10px>
+                <center>
+                    <span style="font-size:24px"></span>
+                </center>
+            </td>
+        </tr>
+    </table>
+
+    <span style="font-size:24px"> paper (coming soon!)   </span><br>
+    <span style="font-size:24px"> CVPR 2023 </span>
+
+
+</center>
+
+<br>
+
+<table align=center width=900px>
+    <tr>
+        <td align=center width=900px>
+            <center>
+        <td><img class="round" style="width:900px" src="images/CrOC_main.png"/></td>
+        </center>
+        </td>
+    </tr>
+    <hr>
+<!--<div class="column-right pxb">
+<table align="center" width="700px">
+    <tbody>
+    <tr><center><a href="http://efrosgans.eecs.berkeley.edu/HessianPenalty/hessian_penalty_90sec_talk.mov">Download video</a></center></tr>
+    <tr>
+        <td align="center" width="700px">
+            <center>
+                <iframe width="700" height="394" src="https://www.youtube.com/embed/jPl-0EN6S1w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
+        </td>
+    </tr></tbody></table>
+<hr>
+</div>-->
+<table align=center width=900px>
+    <center><h1>Abstract</h1></center>
+    <tr>
+      Learning dense visual representations without labels is an arduous task and more so from scene-centric data. We propose to tackle this challenging problem by proposing a <b>Cr</b>oss-view consistency objective with an <b>O</b>nline <b>C</b>lustering mechanism (<b>CrOC</b>) to discover and segment the semantics of the views. In the absence of hand-crafted priors, the resulting method is more generalizable and does not require a cumbersome pre-processing step. More importantly, the clustering algorithm conjointly operates on the features of both views, thereby elegantly bypassing the issue of content not represented in both views and the ambiguous matching of objects from one crop to the other. We demonstrate excellent performance on linear and unsupervised segmentation transfer tasks on various datasets and similarly for video object segmentation.
+        <br>
+    </tr>
+    <br>
+    <hr>
+<!--<div class="column-right pxb">
+    <center><h1>Video (10 min)</h1></center>
+    <table align="center" width="700px">
+        <tbody>
+        <tr><center><a href="http://efrosgans.eecs.berkeley.edu/HessianPenalty/hessian_penalty_spotlight_talk.mp4">Download video</a></center></tr>
+        <tr>
+            <td align="center" width="700px">
+                <center>
+                    <iframe width="700" height="394" src="https://www.youtube.com/embed/uZyIcTkSSXA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </center>
+            </td>
+        </tr></tbody></table>
+    <hr>
+</div>-->
+<!-- <tr><center>
+    <center><h1>Complete Results</h1></center>
+    <p>
+        Below, we show <i>all</i> z components learned by (1) ProGAN fine-tuned with the Hessian Penalty, (2) ProGAN trained from scratch with the Hessian Penalty, (3) ProGAN trained with InfoGAN loss and (4) vanilla ProGAN. Each row corresponds to varying a single z component from -2 to +2, leaving the remaining ones fixed. Different columns in the same row re-sample the fixed z components. All models were trained with 12-dimensional latent z vectors---with the exception of CLEVR-U which used |z|=3---hence why there are 12 rows. These results are <b>not</b> cherry-picked.
+    </p>
+    <table align=center width=800px>
+        <tr>
+            <td>
+                <button class="collapsible">Edges+Shoes </button>
+                <div class="content">
+                    <h1 align=center>Edges+Shoes</h1>
+                    <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/edgeshoes/e2s_ft_025656/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty<br>(Fine-Tuned)</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/edgeshoes/e2s_fs_025656/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/edgeshoes/e2s_info_025355/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>InfoGAN</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/edgeshoes/e2s_bl_024149_wandb_ver/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Vanilla</p></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="collapsible">CLEVR-Simple</button>
+                <div class="content">
+                <h1 align=center>CLEVR-Simple</h1>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_simple/simple_ft_033795/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty<br>(Fine-Tuned)</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_simple/simple_fs_033192/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_simple/simple_info_032589/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>InfoGAN</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_simple/simple_bl_031685/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Vanilla</p></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="collapsible">CLEVR-1FOV</button>
+                <div class="content">
+                <h1 align=center>CLEVR-1FOV</h1>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_1fov/1fov_ft/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty<br>(Fine-Tuned)</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_1fov/1fov_fs/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_1fov/1fov_info/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>InfoGAN</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_1fov/1fov_bl_BEST/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Vanilla</p></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="collapsible">CLEVR-U</button>
+                <div class="content">
+                <h1 align=center>CLEVR-U</h1>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_u/underparam_ft_034966/seed_0/z000_to_z003.mp4"  style="width:195px"></video><p>Hessian Penalty<br>(Fine-Tuned)</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_u/underparam_fs_036507/seed_0/z000_to_z003.mp4"  style="width:195px"></video><p>Hessian Penalty</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_u/underparam_info_030781/seed_0/z000_to_z003.mp4"  style="width:195px"></video><p>InfoGAN</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_u/underparam_bl/seed_0/z000_to_z003.mp4"  style="width:195px"></video><p>Vanilla</p></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="collapsible">CLEVR-Complex</button>
+                <div class="content">
+                <h1 align=center>CLEVR-Complex</h1>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_complex/two_obj_ft/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty<br>(Fine-Tuned)</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_complex/two_obj_fs_036206/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Hessian Penalty</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_complex/two_obj_info_016010/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>InfoGAN</p></div>
+                <div class="res_wrapper"><video controls autoplay loop muted class="rounded" src="images/hessian_visuals/clevr_complex/two_obj_bl_013297/seed_0/z000_to_z012.mp4"  style="width:195px"></video><p>Vanilla</p></div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+    <hr>
+<!-- </center></tr> -->
+<center><h1>CrOC Overview</h1></center>
+
+
+<p> Below, we illustrate an overview of the <b>CrOC</b> training pipeline for learning dense visual representations from unlabeled scene-centric data.
+  We introduce a novel paradigm dubbed <i>join-locate-split</i>: </br>
+
+  <b>Join</b>. The two augmented image views, <span class="math inline"><em>x̃</em><sub>1</sub></span> and <span
+class="math inline"><em>x̃</em><sub>2</sub></span>, are processed by a ViT encoder <span class="math inline"><em>f</em></span> yielding the dense visual representations <span
+class="math inline"><strong>Z</strong><sub>{1, 2}</sub> ∈ ℝ<sup><em>N</em> × <em>d</em></sup></span>, where <span class="math inline"><em>N</em></span> and <span class="math inline"><em>d</em></span> denote the number of spatial tokens and feature dimension, respectively.
+  The dense visual representations are then concatenated along the token axis to obtain the joint representation, <span
+class="math inline"><strong>Z</strong><sub>cat</sub> ∈ ℝ<sup>2<em>N</em> × <em>d</em></sup></span>.</br>
+
+  <b>Locate</b>. The objective is to find semantically coherent clusters of tokens in the joint representation space. As the quality of the input representation improves, we expect the found clusters to represent the different objects or object parts illustrated in the image. The joint representation is fed to the clustering algorithm <span class="math inline">𝒞</span>, which outputs the joint clustering assignments, <span
+class="math inline"><strong>Q</strong><sup>*</sup> ∈ ℝ<sup>2<em>N</em> × <em>K</em></sup></span>. The soft assignments matrix <span class="math inline"><strong>Q</strong><sup>*</sup></span> models the probability of each of the <span class="math inline">2<em>N</em></span> tokens to belong to one of the <span class="math inline"><em>K</em></span> clusters found in the joint space.</br>
+
+  <b>Split</b>. By splitting <span class="math inline"><strong>Q</strong><sup>*</sup></span> in two along the first dimension, the assignment matrix of each view, namely <span
+class="math inline"><strong>Q</strong><sub>{1, 2}</sub><sup>*</sup> ∈ ℝ<sup><em>N</em> × <em>K</em></sup></span> are obtained. One can observe that the <i>link</i> operation is provided for free and that it is trivial to discard any cluster that does not span across the two views.
+  Given the view-wise assignments <span
+class="math inline"><strong>Q</strong><sub>{1, 2}</sub><sup>*</sup></span>, and the corresponding dense representations <span
+class="math inline"><strong>Z</strong><sub>{1, 2}</sub></span>, <span class="math inline"><em>K</em></span> object/cluster-level representations can be obtained for each view as: <span
+class="math inline"><strong>C</strong><sub>1</sub><sup>⊤</sup> = <strong>Z</strong><sub>1</sub><sup>⊤</sup><strong>Q</strong><sub>1</sub><sup>*</sup></span>, where
+  <span class="math inline"><strong>C</strong></span> denotes the centroids. Analogously to the image-level consistency objective, one can enforce similarity constraints between pairs of centroids.
+
+</p>
+
+<table align=center width=900px>
+    <tr>
+        <td align=center width=900px>
+            <center>
+        <td><img class="round" style="width:900px" src="images/CrOC_pipeline_small.png"/></td>
+        </center>
+        </td>
+    </tr>
+
+
+</table>
+
+
+<hr>
+    <center><h1>CrOC Results</h1></center>
+
+    <p>We opt for dense evaluation downstream tasks, which require as little manual intervention as possible, such that the reported results truly reflect the quality of the features. These tasks include:</br>
+
+<b>Transfer learning via linear segmentation</b>. The linear separability of the learned spatial features is evaluated by training a linear layer on top of the frozen features of the pre-trained encoder. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three different datasets, namely PVOC12, COCO-Things, and COCO-Stuff.</br>
+
+
+<b>Transfer learning via unsupervised segmentation</b>. We evaluate the ability of the methods to produce spatial features that can be grouped into coherent clusters. We perform  K-Means clustering on the spatial features of every image in a given dataset with as many centroids as there are classes in the dataset. Subsequently, a label is assigned to each cluster via Hungarian matching. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three datasets, namely PVOC12, COCO-Things, and COCO-Stuff.</br>
+
+
+<b>Semi-supervised video object segmentation</b>. We assess our method's generalizability for semi-supervised video object segmentation on the DAVIS'17 benchmark. This experiment aims to evaluate the spatiotemporal consistency of the learned features. First, the features of each frame in a given video are independently obtained; secondly, a nearest-neighbor approach is used to propagate (from one frame to the next) the ground-truth labels of the first frame.</br>
+
+Below, we show comparison results with respect to SOTA methods:</br>
+
+<table align=center width=900px>
+    <tr>
+        <td align=center width=900px>
+            <center>
+        <td><img class="round" style="width:900px" src="images/CROC_results.png"/></td>
+        </center>
+        </td>
+    </tr>
+
+
+</table>
+
+</p>
+
+
+<!--
+    <hr>
+
+    <center><h1>Try our code</h1></center>
+
+    <p>We released PyTorch code and pre-trained models of the OptTTA for your use. </p>
+<!-- <tr><center>
+    <table align=center width=900px>
+        <tr>
+            <td align=center width=900px>
+                <center>
+            <td><img class="round" style="width:900px" src="images/hessian_code.png"/></td>
+            </center>
+            </td>
+        </tr>
+    </table>
+<!--<!-- </center></tr> -->
+<!--
+    <br>
+    <table align=center width=475 px>
+        <hr>
+        <center><h1>Paper</h1></center>
+        <tr>
+            <td><a href="https://openreview.net/pdf?id=B6HdQaY_iR"><img class="layered-paper-big" style="height:175px" src="images/ScoreNet_first_page.png"/></a></td>
+            <td><span style="font-size:12pt">T. Stegmüller, B. Bozorgtabar, A. Spahr, J.P. Thiran</span><br>
+                <span style="font-size:12pt"><b>ScoreNet: Learning Non-Uniform Attention and Augmentation for Transformer-Based Histopathological Image Classification.</b></span><br>
+                <span style="font-size:12pt">In WACV, 2023.</span>
+                <span style="font-size:12pt"><a href="https://arxiv.org/pdf/2202.07570.pdf">arXiv</a></span>
+            </td>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <div class="white_section_nerf wf-section">
+	 <div class="citation w-container"><h2 class="grey-heading_nerf">BibTeX</h2>
+	 <p class="paragraph-3 nerf_text nerf_results_text citation">@inproceedings{Stegmüller2023scorenet,<br/>
+	 &emsp;&emsp;title={ScoreNet: Learning Non-Uniform Attention and Augmentation for Transformer-Based Histopathological Image Classification},
+	 <br/>&emsp;&emsp;author={Stegmüller, Thomas and Bozorgtabar, Behzad and Spahr, Antoine and Thiran, Jean-Philippe},<br/>&emsp;&emsp;booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},<br/>&emsp;&emsp;year={2023}<br/>}</p></div>
+
+	</div>
+	</div>
+
+<!--
+    <table align=center width=600px>
+        <tr>
+            <td><span style="font-size:14pt"><center>
+				  	<a href="images/OptTTA_bibitex.txt">[Bibtex]</a>
+            </center></span></td>
+        </tr>
+    </table>
+  <!-- </center></tr> -->
+  <!-- </center></tr> -->
+    <br>
+    <hr>
+
+    <table align=center width=1100px>
+        <tr>
+            <td width=400px>
+                <left>
+                    <center><h1>Acknowledgements</h1></center>
+                    We thank Taesung Park for his project page template.
+                </left>
+            </td>
+        </tr>
+    </table>
+</table>
+
+
+<br><br>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

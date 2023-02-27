@@ -123,9 +123,9 @@ img {
     border: 0;
     display: inline-block;
     height: auto;
-    max-width: 100%;
+    max-width: 90%;
     margin-bottom: 20px;
-    vertical-align: middle
+    vertical-align: bottom;
 }
 
 svg:not(:root) {
