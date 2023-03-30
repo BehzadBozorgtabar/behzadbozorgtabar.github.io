@@ -376,15 +376,14 @@ class="math inline"><strong>C</strong><sub>1</sub><sup>⊤</sup> = <strong>Z
 <hr>
     <center><h1>CrOC Results</h1></center>
 
-    <p>We opt for dense evaluation downstream tasks, which require as little manual intervention as possible, such that the reported results truly reflect the quality of the features. These tasks include:</br>
+    <p>We opt for dense evaluation downstream tasks, which require as little manual intervention as possible, such that the reported results truly reflect the quality of the features. The main tasks include:</br>
 
-<b>Transfer learning via linear segmentation</b>. The linear separability of the learned spatial features is evaluated by training a linear layer on top of the frozen features of the pre-trained encoder. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three different datasets, namely PVOC12, COCO-Things, and COCO-Stuff.</br>
-
-
-<b>Transfer learning via unsupervised segmentation</b>. We evaluate the ability of the methods to produce spatial features that can be grouped into coherent clusters. We perform  K-Means clustering on the spatial features of every image in a given dataset with as many centroids as there are classes in the dataset. Subsequently, a label is assigned to each cluster via Hungarian matching. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three datasets, namely PVOC12, COCO-Things, and COCO-Stuff.</br>
+<strong>Transfer learning via linear segmentation</strong>. The linear separability of the learned spatial features is evaluated by training a linear layer on top of the frozen features of the pre-trained encoder. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three different datasets, namely PVOC12, COCO-Things (CC-Th.), and COCO-Stuff (CC-St.). The pre-training dataset is either ImageNet (IN), COCO (CC), or COCO+ (CC+).</br>
 
 
-<b>Semi-supervised video object segmentation</b>. We assess our method's generalizability for semi-supervised video object segmentation on the DAVIS'17 benchmark. This experiment aims to evaluate the spatiotemporal consistency of the learned features. First, the features of each frame in a given video are independently obtained; secondly, a nearest-neighbor approach is used to propagate (from one frame to the next) the ground-truth labels of the first frame.</br>
+<strong>Transfer learning via unsupervised segmentation</strong>. We evaluate the ability of the methods to produce spatial features that can be grouped into coherent clusters. We perform  K-Means clustering on the spatial features of every image in a given dataset with as many centroids as there are classes in the dataset. Subsequently, a label is assigned to each cluster via Hungarian matching. We report the mean Intersection over Union (mIoU) of the resulting segmentation maps on three datasets, namely PVOC12, COCO-Things (CC-Th.), and COCO-Stuff (CC-St.).</br>
+
+
 
 Below, we show comparison results with respect to SOTA methods:</br>
 
