@@ -22,6 +22,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
   <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 </head>
 
 <style>
@@ -126,12 +129,17 @@
                 <a href="https://people.epfl.ch/guillaume.vray?lang=en&cvlang=en" style="color:#f68946;font-weight:normal;">Guillaume Vray<sup>*</sup></a>,
               </span>
               <span class="author-block">
-                <a href="https://people.epfl.ch/jean-philippe.thiran" style="color:#f68946;font-weight:normal;">Jean-Philippe Thiran</a>,
-              </span>
+    <a href="https://people.epfl.ch/jean-philippe.thiran" style="font-weight:normal;">
+      <span style="color:#f68946;">Jean-Philippe</span> <span style="color:#008AD7;">Thiran</span>
+    </a>,
+  </span>
+
               <span class="author-block">
-                <a href="https://behzadbozorgtabar.com/" style="color:#f68946;font-weight:normal;">Behzad Bozorgtabar
-                </a>
-              </span>
+  <a href="https://behzadbozorgtabar.com/" style="font-weight:normal;">
+    <span style="color:#f68946;">Behzad</span> <span style="color:#008AD7;">Bozorgtabar</span>
+  </a>
+</span>
+
             </div>
 
             <div class="is-size-5 publication-authors">
@@ -144,30 +152,6 @@
             </div>
 
 
-          <!-- <div class="column has-text-centered">
-            <h3 class="title is-3 publication-title">Improved Baselines with Visual Instruction Fine-tuning</h3>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://hliu.cc/" style="color:#f68946;font-weight:normal;">Haotian Liu<sup>*</sup></a>,
-              </span>
-              <span class="author-block">
-                <a href="https://chunyuan.li/" style="color:#008AD7;font-weight:normal;">Chunyuan Li<sup>*</sup></a>,
-              </span>
-              <span class="author-block">
-                <a href="https://yuheng-li.github.io" style="color:#008AD7;font-weight:normal;">Yuheng Li</a>,
-              </span>
-              <span class="author-block">
-                <a href="https://pages.cs.wisc.edu/~yongjaelee/" style="color:#f68946;font-weight:normal;">Yong Jae
-                  Lee</a>
-              </span>
-            </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> University of
-                Wisconsin-Madison</b></span>
-              <span class="author-block"><b style="color:#008AD7; font-weight:normal">&#x25B6 </b> Microsoft Research</span>
-            </div> -->
-
             <div class="column has-text-centered">
               <div class="publication-links">
                 <span class="link-block">
@@ -179,17 +163,8 @@
                     <span>Paper</span>
                   </a>
                 </span>
-                <!--<span class="link-block">
-                  <a href="https://arxiv.org/abs/2310.03744" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>-->
                 <span class="link-block">
-                  <a href="https://github.com/haotian-liu/LLaVA" target="_blank"
+                  <a href="https://github.com/devavratTomar/unmixtns" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -242,10 +217,10 @@
             <li>We introduce a novel test-time normalization scheme <strong>(UnMix-TNS)</strong> designed to withstand the
 challenges posed by label temporal correlation of test data streams.</li>
             <li>
-              <strong>UnMix-TNS</strong> demonstrates robustness across various test-time distribution shifts such as single domain, and continual domain. While not primarily designed for mixed domain settings, it offers a level of adaptability in these scenarios. Additionally, the method excels with small batch sizes, even down to individual samples.
+              <strong>UnMix-TNS</strong> demonstrates robustness across various test-time distribution shifts such as <strong>single domain</strong>, and <strong>continual domain</strong>. While not primarily designed for <strong>mixed domain</strong> settings, it offers a level of adaptability in these scenarios. Additionally, the method excels with small batch sizes, even down to individual samples.
             </li>
             <li>
-              <strong>UnMix-TNS</strong> layers, with negligible inference latency, seamlessly integrate into pre-trained neural
+              <strong>UnMix-TNS</strong> layers, with <strong>negligible inference latency</strong>, seamlessly integrate into pre-trained neural
 network architectures, fortified with BN layers, augmenting test-time adaptation strategies while
 incurring minimal overhead.
             </li>
@@ -253,11 +228,6 @@ incurring minimal overhead.
               We present empirical evidence showcasing significant performance improvements of state-of-the-art TTA methods in non-i.i.d. settings when augmented with <strong>UnMix-TNS</strong>, as benchmarked
 on datasets involving common corruptions shifts and natural shifts.
             </li>
-            <li>
-              We also introduce the new benchmarks, ImageNet-VID-C and LaSOT-C video datasets, applying synthetic corruptions to real-world
-              non-i.i.d datasets of ImageNet-VID and LaSOT to simulate realistic domain shifts for frame-wise
-              video classification.
-              </li>
           </ul>
         </div>
       </div>
@@ -266,29 +236,39 @@ on datasets involving common corruptions shifts and natural shifts.
 </section>
 
 
-<!--<img id="teaser2" src="static/images/DTR_teaser2.PNG" alt="teaser2">
-<figcaption style="text-align: center;">
-  <strong>Figure:</strong> Qualtative results on DTR attached on DiT trained on ImageNet.
-</figcaption>-->
+
 
   <section class="section"  style="background-color:#efeff081">
     <div class="container is-max-desktop">
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-six-fifths">
-          <h2 class="title is-3">Idea</h2>
+          <h2 class="title is-3">Motivation</h2>
           <div class="content has-text-justified">
             <p>
-              Instruction tuning large language models (LLMs) using machine-generated instruction-following data has improved zero-shot capabilities on new tasks in the language domain, but the idea is less explored in the multimodal field.
+              To elucidate the motivation of our method, let's compare it with the conventional approach of test-time batch normalization (TBN), using a toy example for clarity.
               <ol type="1">
-                <li><b>Multimodal Instruct Data</b>. <span style="font-size: 95%;">We present the first attempt to use <a href="https://openai.com/research/gpt-4">language-only GPT-4</a> to generate multimodal language-image instruction-following data. </span></li>
-                <li><b>LLaVA Model</b>. <span style="font-size: 95%;">We introduce <it><b>LLaVA</b> (<b>L</b>arge <b>L</b>anguage-<b>a</b>nd-<b>V</b>ision <b>A</b>ssistant)</it>, an end-to-end trained large multimodal model that connects a vision encoder and LLM for general-purpose visual and language understanding.</li>
-                <li><b>Performance</b>. <span style="font-size: 95%;">Our early experiments show that LLaVA demonstrates impressive multimodel chat abilities, sometimes exhibiting the behaviors of multimodal GPT-4 on unseen images/instructions, and yields a 85.1% relative score compared with GPT-4 on a synthetic multimodal instruction-following dataset.
-                  When fine-tuned on <a href="https://scienceqa.github.io/">Science QA</a>, the synergy of LLaVA and GPT-4  achieves a new state-of-the-art accuracy of 92.53%.</li>
-                <li><b>Open-source</b>. <span style="font-size: 95%;">We make GPT-4 generated visual instruction tuning data, our model and code base publicly available.</li>
-                  <img id="teaser2" src="images/UnMix-TNS.gif" alt="unmix-tns">
+                <li><b>I.I.D Setting</b>. <span style="font-size: 95%;">Under i.i.d setting, the feature statistics estimated from the current batch (pink dots) is close to the true statistics of the test distribution. </span></li>
+                <li><b>Non-I.I.D Setting</b>. <span style="font-size: 95%;">Under non-i.i.d. setting (i.e. when the test features are label temporally correlated), the feature statistics estimated from the current batch are biased towards one category.</li>
+                <li><b>Our Method.</b> To address this imbalance issue, we introduce a novel strategy termed <it><b>UnMix-TNS</b> (<b>Un-Mix</b>ing <b>T</b>est-Time <b>N</b>ormalization <b>S</b>tatistics)</it> simulating the i.i.d. setting by splitting the statistics of the test distribution into K components (4 in the above example), and estimating them using only the test features closest to the individual component.</li>
+
+
+                  <div style="display: flex; justify-content: space-around; align-items: center;">
+
+  <!-- First subfigure -->
+  <img id="teaser1" src="images/ref.png" alt="unmix-tns" style="max-width: 430px; margin-top: -20px;">
+
+  <!-- Second subfigure -->
+  <img id="teaser2" src="images/tbn_iid.gif" alt="another-image" style="max-width: 300px;">
+
+  <!-- Add more subfigures as needed -->
+  <img id="teaser3" src="images/tbn_non_iid.gif" alt="yet-another-image" style="max-width: 300px;">
+  <!-- Add more subfigures as needed -->
+  <img id="teaser4" src="images/unmix_tns_non_iid.gif" alt="yet-last-image" style="max-width: 300px;">
+
+</div>
           <figcaption style="text-align: center;">
-            <strong>Figure:</strong> Qualtative results on DTR attached on DiT trained on ImageNet.
+            <strong>Figure:</strong> Illustration comparing UnMix-TNS with the TBN approach using a toy example in i.i.d. and non-i.i.d. settings.
           </figcaption>
               </ol>
            </p>
@@ -300,6 +280,117 @@ on datasets involving common corruptions shifts and natural shifts.
     </div>
   </section>
 
+
+  <section class="section">
+    <div class="column is-full-width">
+    <div class="container is-max-desktop">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2">Method: UnMix-TNS</h2>
+      <div class="content">
+          <h2 class="title is-4"> 1. Distribution of \(K\) UnMix-TNS Components Mixture</h2>
+          <div class="image-container">
+          <figure>
+            <img id="taskaffinity" src="images/unmixtns_method.png" alt="Task Affinity Diagram">
+            <figcaption style="text-align: center;">
+              <strong>Figure:</strong> <strong>An Overview of UnMix-TNS.</strong> Given a batch of non-i.i.d test features \( \mathbf{z^t} \in \mathbb{R}^{B \times C \times L} \) at a temporal instance \( t \), we mix the instance-wise statistics \( (\tilde{\mu}^t, \tilde{\sigma}^t) \in \mathbb{R}^{B \times C} \) with \( K \) UnMix-TNS components. The alignment of each sample in the batch with the UnMix-TNS components is quantified through similarity-derived assignment probabilities \( p_k^t \). This aids both the <em>mixing</em> process and subsequent component updates for time \( t+1 \).
+          </figure>
+        </div>
+          <p>Let \( [\mu_1^t, \dots, \mu_K^t] \) and \( [\sigma_1^t, \dots, \sigma_K^t] \) denote the statistics of the \( K \) components within the UnMix-TNS layer at a given temporal instance \( t \), where each \( \mu_k^t, \sigma_k^t \in \mathbb{R}^C \). We articulate the distribution \( h_Z^t(z) \) of instance-wise test features \( z \in \mathbb{R}^C \) marginalized over all labels at a temporal instance \( t \) using the \( K \) components:</p>
+
+<p>\[ h_{Z_c}^t(z_c) = \frac{1}{K}\sum_k \mathcal{N}(\mu_{k,c}^t, \sigma_{k,c}^t), \]</p>
+
+<p>where \( \mathcal{N} \) represents the Normal distribution function. Given only \( (\mu_k^t, \sigma_k^t)_{k=1}^{K} \), one can derive the label unbiased normalization test statistics \( (\bar{\mu}^t, \bar{\sigma}^t) \) at time \( t \) as follows:</p>
+
+<p>\[
+\bar{\mu}^t = \mathbb{E}_{h_{Z_c}^t}[z_c]=\frac{1}{K}\sum_k \mu_{k,c}^t,
+\]</p>
+
+<p>\[
+(\bar{\sigma}^t)^2 = \mathbb{E}_{h_{Z_c}^t}[(z_c-\bar{\mu}^t)^2]=\frac{1}{K}\sum_k (\sigma_{k,c}^t)^2 + \frac{1}{K}\sum_k (\mu_{k,c}^t)^2 - \Big(\frac{1}{K}\sum_k\mu_{k,c}^t\Big)^2,
+\]</p>
+
+<p>Subsequent sections will delve into the initialization scheme for the \( K \) UnMix-TNS components and elucidate the process of updating their individual statistics \( (\mu_k^t, \sigma_k^t) \) at temporal instance \( t \).</p>
+
+        </div>
+      </div>
+      <br>
+        <!-- Task Affinity -->
+        <div class="content">
+          <h2 class="title is-4">2. Initializing UnMix-TNS Components</h2>
+          <div class="flex-container">
+
+            <!-- Text Container -->
+            <div class="text-container">
+              <p>Consider the pair \( (\mu,\sigma) \in \mathbb{R}^C \), which stands as the stored means and standard deviation of the features in a given BN layer of \( f_\theta \), derived from the source training dataset before adaptation.</p>
+              <p>We initialize statistics \( (\mu_k^t, \sigma_k^t) \) of \( K \) components of UnMix-TNS at \( t=0 \), as delineated in the following Equation:</p>
+              <p>\[
+              \mu_{k,c}^0 = \mu_c + \sigma_c \sqrt{\frac{\alpha \cdot K}{K-1}} \cdot \zeta_{k,c}, \quad \sigma_{k,c}^0 = \sqrt{1-\alpha}\cdot\sigma_c, \quad \zeta_{k,c} \sim \mathcal{N}(0, 1)
+              \]</p>
+              <p>where \( \zeta_{k,c} \) is sampled from the standard normal distribution \( \mathcal{N}(0, 1) \), and \( \alpha \in (0, 1) \) is a hyperparameter that controls the extent to which the means of the UnMix-TNS components deviate from the stored means of BN layer during initialization. Note that the initial normalization statistics \( (\bar{\mu}^0, \bar{\sigma}^0) \) estimated from \( (\mu_k^0, \sigma_k^0) \) have an expected value equal to the stored statistics of the BN layer, i.e., \( \mathbb{E}[\bar{\mu}^0_k]=\mu \) and \( \mathbb{E}[(\bar{\sigma}^0_k)^2] = \sigma^2 \) for all values of \( \alpha \). </p>
+
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="content">
+          <h2 class="title is-4">3. Mask Creation of Denoising Task Routing (DTR)</h2>
+          <h3 class="title is-5">A. Design principles</h2>
+              <p>
+                DTR utilizes the specific characteristics of denoising tasks for task routing.
+                From recent findings, design of masks incorporates <strong>(1) Task Affinity</strong> and <strong>(2) Task Weights.</strong>
+              </p>
+              <ul>
+                <li>
+                  <strong>Task Affinity</strong>:
+                  Denoising tasks at adjacent timesteps have a higher task affinity than those distant timesteps.
+                  To incorporate this, DTR enforces denoising tasks at adjacent timesteps to have more shared channels than those distant timesteps.
+                </li>
+                <li>
+                  <strong>Task Weight</strong>:
+                  Previous loss weighting methods have shown that assinging higher weights to denoising tasks at higher timesteps can improve diffusion models.
+                  DTR incorporates this by assigning more channels to denoising tasks at higher timesteps.
+                </li>
+            </ul>
+          <h3 class="title is-5">B. Routing Mask</h2>
+
+            <div class="flex-container2">
+              <!-- Image Container -->
+              <div class="image-container2">
+              <figure>
+                <img id="taskaffinity" src="images/.png" alt="Task Affinity Diagram">
+                <figcaption style="text-align: center;">
+                  <strong>Figure:</strong> Routing mask according to various \(\alpha \).
+              </figure>
+            </div>
+            <!-- Text Container -->
+            <div class="text-container2">
+              <p>
+                The mask \(m_{D_t}\) is created as:
+                <p>
+                  \[ m_{D_t, c} = \begin{cases}
+                  1, & \text{if } \lfloor(C - C_\beta) \cdot \left(\frac{t-1}{T}\right)^{\alpha}\rceil < c \leq \lfloor(C - C_\beta) \cdot \left(\frac{t}{T}\right)^{\alpha}\rceil + C_\beta,\\
+                  0, & \text{otherwise.}
+                  \end{cases} \]
+                </p>
+                <ul>
+                  <li>
+                    \(C_\beta\): activated number of channels for each task, which is represented as \(\beta \cdot C\). \((0<\beta< 1) \).
+                  </li>
+                  <li>
+                    <strong>Task Affinity</strong>: In above equation, activated channels are shifted as sliding window, enforcing denoising tasks at adjacent timesteps to have more shared channels.
+                  </li>
+                  <li>
+                    <strong>Task Weight</strong>: By introducing hyperparameter \(\alpha > 1\), shifting of sliding window less occurs for lower timesteps,
+                    allwoing  more task-dedicated channels to higher timesteps.
+                  </li>
+              </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
 
 
 <section class="section">
