@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Self-Supervised Learning via Cross-Image Object-Level Bootstrapping">
+  <meta name="keywords" content="multimodal chatbot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CrIBo</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/954/954591.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<style>
+  .expandable-card .card-text-container {
+    max-height: 200px;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .expandable-card.expanded .card-text-container {
+    max-height: none;
+  }
+
+  .expand-btn {
+    position: relative;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* margin-top: -20px; */
+    /* justify-content: center; */
+    color: #510c75;
+    border-color: transparent;
+  }
+
+  .expand-btn:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+    text-decoration: none;
+    border-color: transparent;
+    color: #510c75;
+  }
+
+  .expand-btn:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  .expandable-card:not(.expanded) .card-text-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
+  }
+
+  .expandable-card:not(.expanded) .expand-btn {
+    margin-top: -40px;
+  }
+
+  .card-body {
+    padding-bottom: 5px;
+  }
+
+  .vertical-flex-layout {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .figure-img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .adjustable-font-size {
+    font-size: calc(0.5rem + 2vw);
+  }
+
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* overflow-x: hidden; */
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  #gradio pre {
+    background-color: transparent;
+  }
+</style>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">CrIBo <img style="width: 60px; height: 60px; vertical-align: middle;" src="images/cribo_title.png">: Self-Supervised Learning via Cross-Image Object-Level Bootstrapping</h1>
+            <h3 class="title is-3 publication-title">ICLR 2024 (Spotlight)</h3>
+            <!--<h5 class="subtitle is-5 publication-awards">NeurIPS 2023 (Oral)</h5>-->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://www.timlebailly.com/" style="color:#008AD7;font-weight:normal;">Tim Lebailly<sup>*</sup></a>,
+              </span>
+              <span class="author-block">
+                <a href="https://people.epfl.ch/thomas.stegmuller?lang=en" style="color:#008AD7;font-weight:normal;">Thomas Stegmüller<sup>*</sup></a>,
+              </span>
+              <span class="author-block">
+  <a href="https://behzadbozorgtabar.com/" style="color:#008AD7;font-weight:normal;">Behzad Bozorgtabar</a>
+</span>
+              <span class="author-block">
+    <a href="https://people.epfl.ch/jean-philippe.thiran" style="color:#008AD7;font-weight:normal;">Jean-Philippe Thiran</a>,
+  </span>
+  <span class="author-block">
+<a href="https://www.esat.kuleuven.be/psi/TT/" style="color:#008AD7;font-weight:normal;">Tinne Tuytelaars</a>
+</span>
+
+
+
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><b style="color:#7ED321; font-weight:normal">&#x25B6 </b> KU Leuven</b></span>
+              <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> EPFL</b></span>
+              <span class="author-block"><b style="color:#50E3C2; font-weight:normal">&#x25B6 </b> CHUV</span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            </div>
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2310.07855.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://openreview.net/pdf?id=3M0GXoUEzP" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>OpenReview</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/tileb1/CrIBo" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+
+
+
+                <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                  </a>
+              </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h4 class="subtitle has-text-centered">
+          🔥<span style="color: #ff3860">[NEW!]</span> UnMix-TNS achieves SoTA on 6 benchmarks, efficiently managing label temporal correlation in test streams with common corruption and natural shifts, by just simply substituting the original BN layers in pretrained deep networks, with negligible inference latency.
+
+        </h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"  style="background-color:#efeff081">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Summary</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li>We introduce a novel test-time normalization scheme <strong>(UnMix-TNS)</strong> designed to withstand the
+challenges posed by label temporal correlation of test data streams.</li>
+            <li>
+              <strong>UnMix-TNS</strong> demonstrates robustness across various test-time distribution shifts such as <strong>single domain</strong>, and <strong>continual domain</strong>. While not primarily designed for <strong>mixed domain</strong> settings, it offers a level of adaptability in these scenarios. Additionally, the method excels with small batch sizes, even down to individual samples.
+            </li>
+            <li>
+              <strong>UnMix-TNS</strong> layers, with <strong>negligible inference latency</strong>, seamlessly integrate into pre-trained neural
+network architectures, fortified with BN layers, augmenting test-time adaptation strategies while
+incurring minimal overhead.
+            </li>
+            <li>
+              We present empirical evidence showcasing significant performance improvements of state-of-the-art TTA methods in non-i.i.d. settings when augmented with <strong>UnMix-TNS</strong>, as benchmarked
+on datasets involving common corruptions shifts and natural shifts.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Motivation</h2>
+          <div class="content has-text-justified">
+            <p>
+              To elucidate the motivation of our method, let's compare it with the conventional approach of test-time batch normalization (TBN), using a toy example for clarity.
+              <ol type="1">
+                <li><b>I.I.D Setting</b>. <span style="font-size: 95%;">Under i.i.d setting, the feature statistics estimated from the current batch (pink dots) is close to the true statistics of the test distribution. </span></li>
+                <li><b>Non-I.I.D Setting</b>. <span style="font-size: 95%;">Under non-i.i.d. setting (i.e. when the test features are label temporally correlated), the feature statistics estimated from the current batch are biased towards one category.</li>
+                <li><b>Our Method.</b> To address this imbalance issue, we introduce a novel strategy termed <it><b>UnMix-TNS</b> (<b>Un-Mix</b>ing <b>T</b>est-Time <b>N</b>ormalization <b>S</b>tatistics)</it> simulating the i.i.d. setting by splitting the statistics of the test distribution into K components (4 in this example), and estimating them using only the test features closest to the individual component.</li>
+
+
+                  <div style="display: flex; justify-content: space-around; align-items: center;">
+
+  <!-- First subfigure -->
+  <img id="teaser1" src="images/ref.png" alt="unmix-tns" style="max-width: 430px; margin-top: -20px;">
+
+  <!-- Second subfigure -->
+  <img id="teaser2" src="images/tbn_iid.gif" alt="another-image" style="max-width: 300px;">
+
+  <!-- Add more subfigures as needed -->
+  <img id="teaser3" src="images/tbn_non_iid.gif" alt="yet-another-image" style="max-width: 300px;">
+  <!-- Add more subfigures as needed -->
+  <img id="teaser4" src="images/unmix_tns_non_iid.gif" alt="yet-last-image" style="max-width: 300px;">
+
+</div>
+          <figcaption style="text-align: center;">
+            <strong>Figure:</strong> Illustration comparing UnMix-TNS with the TBN approach using a toy example in i.i.d. and non-i.i.d. settings.
+          </figcaption>
+              </ol>
+           </p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="column is-full-width">
+    <div class="container is-max-desktop">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2">Method: UnMix-TNS</h2>
+      <div class="content">
+          <h2 class="title is-4"> 1. Distribution of \(K\) UnMix-TNS Components Mixture</h2>
+          <div class="image-container">
+          <figure>
+            <img id="taskaffinity" src="images/unmixtns_method.png" alt="Task Affinity Diagram">
+            <figcaption style="text-align: center;">
+              <strong>Figure:</strong> <strong>An Overview of UnMix-TNS.</strong> Given a batch of non-i.i.d test features \( \mathbf{z^t} \in \mathbb{R}^{B \times C \times L} \) at a temporal instance \( t \), we mix the instance-wise statistics \( (\tilde{\mu}^t, \tilde{\sigma}^t) \in \mathbb{R}^{B \times C} \) with \( K \) UnMix-TNS components. The alignment of each sample in the batch with the UnMix-TNS components is quantified through similarity-derived assignment probabilities \( p_k^t \). This aids both the <em>mixing</em> process and subsequent component updates for time \( t+1 \).
+          </figure>
+        </div>
+          <p>Let \( [\mu_1^t, \dots, \mu_K^t] \) and \( [\sigma_1^t, \dots, \sigma_K^t] \) denote the statistics of the \( K \) components within the UnMix-TNS layer at a given temporal instance \( t \), where each \( \mu_k^t, \sigma_k^t \in \mathbb{R}^C \). We articulate the distribution \( h_Z^t(z) \) of instance-wise test features \( z \in \mathbb{R}^C \) marginalized over all labels at a temporal instance \( t \) using the \( K \) components:</p>
+
+<p>\[ h_{Z_c}^t(z_c) = \frac{1}{K}\sum_k \mathcal{N}(\mu_{k,c}^t, \sigma_{k,c}^t), \]</p>
+
+<p>where \( \mathcal{N} \) represents the Normal distribution function. Given only \( (\mu_k^t, \sigma_k^t)_{k=1}^{K} \), one can derive the label unbiased normalization test statistics \( (\bar{\mu}^t, \bar{\sigma}^t) \) at time \( t \) as follows:</p>
+
+<p>\[
+\bar{\mu}^t = \mathbb{E}_{h_{Z_c}^t}[z_c]=\frac{1}{K}\sum_k \mu_{k,c}^t,
+\]</p>
+
+<p>\[
+(\bar{\sigma}^t)^2 = \mathbb{E}_{h_{Z_c}^t}[(z_c-\bar{\mu}^t)^2]=\frac{1}{K}\sum_k (\sigma_{k,c}^t)^2 + \frac{1}{K}\sum_k (\mu_{k,c}^t)^2 - \Big(\frac{1}{K}\sum_k\mu_{k,c}^t\Big)^2,
+\]</p>
+
+<p>Subsequent sections will delve into the initialization scheme for the \( K \) UnMix-TNS components and elucidate the process of updating their individual statistics \( (\mu_k^t, \sigma_k^t) \) at temporal instance \( t \).</p>
+
+        </div>
+      </div>
+      <br>
+        <!-- Task Affinity -->
+        <div class="content">
+          <h2 class="title is-4">2. Initializing UnMix-TNS Components</h2>
+          <div class="flex-container">
+
+            <!-- Text Container -->
+            <div class="text-container">
+              <p>Consider the pair \( (\mu,\sigma) \in \mathbb{R}^C \), which stands as the stored means and standard deviation of the features in a given BN layer of \( f_\theta \), derived from the source training dataset before adaptation.</p>
+              <p>We initialize statistics \( (\mu_k^t, \sigma_k^t) \) of \( K \) components of UnMix-TNS at \( t=0 \), as delineated in the following Equation:</p>
+              <p>\[
+              \mu_{k,c}^0 = \mu_c + \sigma_c \sqrt{\frac{\alpha \cdot K}{K-1}} \cdot \zeta_{k,c}, \quad \sigma_{k,c}^0 = \sqrt{1-\alpha}\cdot\sigma_c, \quad \zeta_{k,c} \sim \mathcal{N}(0, 1)
+              \]</p>
+              <p>where \( \zeta_{k,c} \) is sampled from the standard normal distribution \( \mathcal{N}(0, 1) \), and \( \alpha \in (0, 1) \) is a hyperparameter that controls the extent to which the means of the UnMix-TNS components deviate from the stored means of BN layer during initialization. Note that the initial normalization statistics \( (\bar{\mu}^0, \bar{\sigma}^0) \) estimated from \( (\mu_k^0, \sigma_k^0) \) have an expected value equal to the stored statistics of the BN layer, i.e., \( \mathbb{E}[\bar{\mu}^0_k]=\mu \) and \( \mathbb{E}[(\bar{\sigma}^0_k)^2] = \sigma^2 \) for all values of \( \alpha \). </p>
+
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div class="content">
+          <h2 class="title is-4">3. Redefining Feature Normalization through UnMix-TNS</h2>
+          <p>Considering the current batch of temporally correlated features \( \mathbf{z}^t \in \mathbb{R}^{B \times C \times L} \), we commence by calculating the instance-wise means and standard deviation \( (\tilde{\mu}^t, \tilde{\sigma}^t) \in \mathbb{R}^{B \times C} \), mirroring the Instance Normalization, i.e.:</p>
+
+<p>\[
+\tilde{\mu}^t_{b,c} = \frac{1}{L}\sum_{l} \mathbf{z}^t_{b,c,l},\quad \tilde{\sigma}^t_{b,c} =\sqrt{\frac{1}{L} \sum_l(\mathbf{z}^t_{b,c,l} - \tilde{\mu}^t_{b,c})^2},
+\]</p>
+
+<p>To gauge the likeness between UnMix-TNS components and current test features, we compute the cosine similarity \( s^t_{b,k} \) of the current instance-wise means \( \tilde{\mu}^t_{b,:} \) with that of \( K \) BN components \( \left \{ \mu_k^t \right \}_{k=1}^{K} \) as follows:</p>
+
+<p>\[
+s_{b,k}^t = \texttt{sim}\left ( \tilde{\mu}^t_{b,:},\mu_k^t \right ),
+\]</p>
+
+<p>where \( \texttt{sim}(\mathbf{u},\mathbf{v})=\frac{\mathbf{u}^T\mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|} \) denote the dot product between \( l_2 \) normalized \( \mathbf{u} \) and \( \mathbf{v} \in \mathbb{R}^C \).</p>
+
+<p>We proceed to derive the refined feature statistics, denoted as \( (\bar{\mu}^t, \bar{\sigma}^t) \in \mathbb{R}^{B \times C} \) for each instance. This is accomplished by a weighted mixing of the current instance statistics, \( (\tilde{\mu}^t, \tilde{\sigma}^t) \), harmoniously blended with the \( K \) BN statistics components, \( (\mu_k^t, \sigma_k^t)_{k=1}^K \). This mixing strategy unfolds similar to as:</p>
+
+<p>\[
+\bar{\mu}^t_{b,c} = \frac{1}{K}\sum_{k}\hat{\mu}^t_{b,k,c},
+\]</p>
+
+<p>\[
+(\bar{\sigma}^t_{b,c})^2 = \frac{1}{K}\sum_{k}(\hat{\sigma}^t_{b,k,c})^2 + \frac{1}{K}\sum_{k}(\hat{\mu}^t_{b,k,c})^2 - \left(\frac{1}{K}\sum_k \hat{\mu}^t_{b,k,c}\right)^2,
+\]</p>
+
+<p>\[
+\hat{\mu}^t_{b,k,c} = (1-p_{b,k}^t) \cdot \mu_{k,c}^t + p_{b,k}^t \cdot \tilde{\mu}^t_{b,c}, \quad (\hat{\sigma}^t_{b,k,c})^2 =  (1-p_{b,k}^t) \cdot (\sigma_{k,c}^t)^2 + p_{b,k}^t \cdot (\tilde{\sigma}^t_{b,c})^2,
+\]</p>
+
+<p>In this formulation, \( p_{b,k}^t = \frac{\exp(s^t_{b,k}/\tau)}{\sum_\kappa \exp(s^t_{b,k}/\tau)} \) represents the assignment probability of the \( b^{th} \) instance's statistics in the batch belonging to the \( k^{th} \) statistics component. Note that, \( p_{b,k}^t\approx 1 \) if \( b^{th} \) instance exhibits a greater affinity to the \( k^{th} \) component, and vice-versa. We employ the refined feature statistics \( (\bar{\mu}^t, \bar{\sigma}^t) \) to normalize \( \mathbf{z}^t \), yielding elaborated upon below:
+  <p>\[
+\hat{\mathbf{z}}_{b,c,:}^t = \gamma_c \cdot \frac{\mathbf{z}_{b,c,:}^t - \bar{\mu}_{b,c}^t}{\bar{\sigma}^t_{b,c}} + \beta_c,
+\]</p>
+
+<p>In the concluding steps, all \(K\) BN statistics components undergo refinement. This is achieved by updating them based on the weighted average difference between the current instance statistics, with weights drawn from the corresponding assignment probabilities across the batch:</p>
+
+<p>\[
+\mu_{k,c}^{t+1} \leftarrow \mu_{k,c}^t + \frac{\lambda}{B}\sum_{b} p_{b,k}^t \cdot (\tilde{\mu}^t_{b,c} - \mu_{k,c}^t),
+\]</p>
+
+<p>\[
+(\sigma_{k,c}^{t+1})^2 \leftarrow (\sigma_{k,c}^t)^2 + \frac{\lambda}{B}\sum_{b} p_{b,k}^t \cdot ((\tilde{\sigma}^t_{b,c})^2 - (\sigma_{k,c}^t)^2),
+\]</p>
+<p>where \( \lambda \) is the momentum hyperparameter and is set based on the principles of momentum batch normalization. The more a statistic component is closely aligned with the instance-wise statistics in the test batch (precisely when \( p_{b,k}^t \approx 1 \)), the more it undergoes a substantial update.</p>
+
+
+          </div>
+        </div>
+    </div>
+  </section>
+
+
+  <section class="section" style="background-color:#efeff081">
+    <div class="column is-full-width">
+      <div class="container is-max-desktop">
+      <div class="container is-max-desktop">
+        <h2 class="title is-2">Experimental Results</h2>
+
+        <h2 class="title is-4"> 1. UnMix-TNS showcases superior adaptability  under non-i.i.d. test-time adaptation across corruption benchmarks</h2>
+
+        <br> </br>
+        <img id="taskaffinity" src="images/Non-i.i.d._corruption.png">
+        <figcaption style="text-align: center;">
+          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on corruption benchmarks.</strong> Averaged online classification error rate (in %) across 15 corruptions at severity level 5 on CIFAR10-C, CIFAR100-C, and ImageNet-C, comparing <em>single</em>, <em>continual</em>, and <em>mixed</em> domain adaptation. Averaged over three runs.
+
+        </figcaption>
+        <br> </br>
+
+        <h2 class="title is-4"> 2. UnMix-TNS excels in non-i.i.d. test-time adaptation across natural domain benchmark</h2>
+        <br> </br>
+        <img id="taskaffinity" src="images/Non-i.i.d._natural.png">
+        <figcaption style="text-align: center;">
+          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on natural shift benchmark (DomainNet-126).</strong> Online classification error rate (in %) depicted for each source domain, averaged across the other target domains. A comparative analysis between <em>single</em>, <em>continual</em>, and <em>mixed</em> domain adaptation is presented. Averaged over three runs.
+
+        </figcaption>
+        <br> </br>
+
+        <h2 class="title is-4"> 3. UnMix-TNS adeptly handles non-i.i.d. test-time shifts within corrupted video datasets </h2>
+        <p>
+          We introduce the ImageNet-VID-C and LaSOT-C video datasets, applying synthetic corruptions to real-world non-i.i.d datasets of ImageNet-VID and LaSOT to simulate realistic domain shifts for frame-wise video classification.
+        </p>
+        <br> </br>
+        <img id="taskaffinity" src="images/Non-i.i.d._videos.png">
+        <figcaption style="text-align: center;">
+          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on corrupted video datasets.</strong> We adapt the ResNet-50 backbone trained on ImageNet on the sequential frames of ImageNet-VID-C and LaSOT-C and report classification error rates (%). <sup>&dagger;</sup> denotes methods using UnMix-TNS layers.
+        </figcaption>
+        <br> </br>
+
+        <h2 class="title is-4"> 4. Efficient adaptation to test sample correlation and batch size variability </h2>
+    <p>This study, in line with recent findings, employs the Dirichlet distribution to synthesize test streams with variable correlations using the concentration parameter &delta;, exploring its effect on domain adaptation in both continual and mixed scenarios. A reduction in &delta; not only intensifies test sample correlation and category aggregation, as shown in experiments on the CIFAR100-C dataset, but also reduces the performance of traditional batch normalization techniques due to their inability to account for increased sample correlation. However, UnMix-TNS stands out for its resilience across varying &delta; values, proving its efficacy in handling non-i.i.d. test-time conditions.</p>
+    <p>In addition to correlation impact, the study also delves into how different batch sizes, ranging from 1 to 256, affect domain adaptation. The results indicate that larger batch sizes generally lower error rates for conventional normalization methods, except for &alpha;-BN, which shows a unique performance curve. This suggests that larger batches, by including more categories, reduce label correlation, with &alpha;-BN performing best at a batch size of 1 due to its unique normalization strategy. Remarkably, UnMix-TNS maintains consistent superiority, unaffected by batch size changes, thereby affirming its robustness across diverse adaptation contexts.</p>
+
+        <br> </br>
+        <img id="taskaffinity" src="images/unmix-tns_ablation.png">
+        <figcaption style="text-align: center;">
+          <strong>Figure:</strong> <strong>Ablation study</strong> on the impact of (a) Dirichlet parameter, &delta;, and (b) batch size on CIFAR100-C, comparing several test-time normalization methods including TBN, &alpha;-BN, RBN, and UnMix-TNS.
+        </figcaption>
+        <br> </br>
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="column is-full-width">
+    <div class="container is-max-desktop">
+    <div class="container is-max-desktop">
+      <h2 class="title is-2">Theoretical Insights into UnMix-TNS Adaptation</h2>
+      <div class="content">
+
+        <p>Let \(h(z)\) be the true distribution of the test domain features. We assume that \(h(z)\) can be decomposed as a mixture of \(K\) Gaussian distributions \(\{h_k(z)\}_{k=1}^K\), such that \(h(z) = \frac{1}{K}\sum_k h_k(z)\). Additionally, we postulate the existence of a perfect classifier \(F:Z\to (Y,K)\) that deterministically assigns each feature \(z\) to its corresponding label \(y\) and component \(k\), expressed as \((y, k) = F(z)\).</p>
+
+        <p>In the context of independent and identically distributed (i.i.d.) features, each \(z\) is uniformly sampled over time with respect to its corresponding label \(y\) (unknown to the learner), and thus the expected value of the mean (utilized for normalization) of the current batch can be calculated as follows:</p>
+
+        <p>\[
+        \mathbb{E}[\mu_\text{batch}] = \mu^* = \sum_{y, k}\int z \cdot h(z, y, k) dz = \sum_{y,k} \int z \cdot h(z|k)h(y|z,k)h(k) dz
+        \]</p>
+
+
+        <p>where \(h(z,y,k)\) represents the joint distribution of the features \(z\), labels \(y\) and the component \(k\). The term \(h(z|k) = h_k(z)\) denotes the probability distribution of the features given a particular component \(k\), while \(h(k) = \frac{1}{K}\) implies that each component is equally likely. Furthermore, \(h(y|z,k)\) is the conditional probability distribution of the labels given the features \(z\) and the component \(k\). Since the perfect classifier \(F\) allows for the deterministic determination of \(y, k\) from \(z\), it follows that \(\sum_y h(y|z,k) = 1\). This can be rearticulated in the above equation for estimating the expected mean \(\mu^*\) as follows:</p>
+
+        <p>\[
+        \mu^* = \frac{1}{K}\sum_{y,k} \int z \cdot h_k(z)h(y|z,k)dz = \frac{1}{K}\sum_{k} \int z \cdot h_k(z)dz = \frac{1}{K} \sum_k \mu^*_k.
+        \]</p>
+
+        <p>where \(\mu^*_k\) is the mean of the \(k^{th}\) component of the true distribution of the test domain features.</p>
+
+        <p>In a non-i.i.d. scenario, we sample the features <span class="math" data-equation="z"></span> to ensure a temporal correlation with their corresponding labels <span class="math" data-equation="y"></span>. As a result, the true test domain distribution <span class="math" data-equation="h(z)"></span> at a given time <span class="math" data-equation="t"></span> is approximated as <span class="math" data-equation="\Hat{h}^t(z) = \frac{1}{K} \sum_k \Hat{h}_k^t(z)"></span>, where the distribution of the <span class="math" data-equation="k^{th}"></span> component <span class="math" data-equation="h_k(z)"></span> is approximated as <span class="math" data-equation="\Hat{h}_k^t(z)"></span>. This leads to the estimation of an unbiased normalization mean at time <span class="math" data-equation="t"></span> using <span class="math" data-equation="\Hat{h}^t(z)"></span>, as expressed in the following equation:</p>
+    <p><span class="math" data-equation="\mu_\text{\tiny UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot \Hat{h}_k^t(z) dz."></span></p>
+
+    <p>\[
+    \mu_\text{UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot \hat{h}_k^t(z) dz.
+    \]</p>
+
+    <p>Furthermore, the bias \(\Delta_\text{UnMix-TNS}(t)\) between the mean of the true test-domain distribution \(\mu^*\) and the estimated mean  \(\mu_\text{\tiny UnMix-TNS}(t)\) at time \(t\) can be recorded as:</p>
+
+    <p>\[
+    \Delta_\text{UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot (h_k(z) - \hat{h}_k^t(z) ) dz = \frac{1}{K}\sum_k(\mu^*_k - \hat{\mu}^t_k)
+    \]</p>
+
+    <p>where \(\hat{\mu}^t_k\) is the estimated mean of the same \(k^{th}\) component at time \(t\). Note that as time progresses and \(t\) increases, \(\hat{\mu}_k^t \rightarrow \mu_k^*\), as we update \(\hat{\mu}_k^t\) using exponential moving average mechanism. Thus, UnMix-TNS can help mitigate the bias introduced in the estimation of feature normalization statistics, which arises due to the time-correlated feature distribution. Conversely, the expected value of the normalization mean estimated using the current batch (TBN) for the non-i.i.d. scenario can be defined as:</p>
+
+    <p>\[
+        \mu_{\text{TBN}}(t) = \sum_{y, k}\int z \cdot h^t(z, y, k) dz = \sum_{y,k} \int z \cdot h(z|k)h(y|z,k)h^t(k) dz = \sum_{k} \int z \cdot h_k(z) h^t(k) dz
+    \]</p>
+
+    <p>where \(h^t(k)\) represents non-i.i.d. characteristics of the test data stream. In this case, the bias is obtained as follows:</p>
+
+    <p>\[
+   \Delta_{\text{TBN}} (t) = \mu^* - \sum_k h^t(k) \mu^*_k
+\]</p>
+
+    <p>This equation indicates that if the test samples are uniformly distributed over time (i.e., in an i.i.d. manner), where \(h^t(k)=1/K\), the estimation of normalization statistics will not be biased. However, in situations where  \(h^t(k)\) smoothly varies with time, favoring the selection of a few components over others, TBN will introduce a non-zero bias in the estimation.</p>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@inproceedings{tomar2024UnMixTNS,
+  title={Un-Mixing Test-Time Normalization Statistics: Combatting Label Temporal Correlation},
+  author={Tomar, Devavrat and Vray, Guillaume and Thiran, Jean-Philippe and Bozorgtabar, Behzad},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2024}
+    }
+</code></pre>
+  </div>
+</section>
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p>
+      This website is adapted from <a
+      href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a href="https://llava-vl.github.io/">LLaVA</a>, licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+</section>
+
+</body>
+
+</html>
