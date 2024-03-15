@@ -17,6 +17,9 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/954/954591.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -207,8 +210,7 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <h4 class="subtitle has-text-centered">
-          🔥<span style="color: #ff3860">[NEW!]</span> UnMix-TNS achieves SoTA on 6 benchmarks, efficiently managing label temporal correlation in test streams with common corruption and natural shifts, by just simply substituting the original BN layers in pretrained deep networks, with negligible inference latency.
-
+          🔥<span style="color: #ff3860">[NEW!]</span> <strong>CrIBo</strong> is the first online SSL method that explicitly enforces cross-image consistency at the object/object-part level, showcasing excellent performance on in-context scene understanding across several dense downstream tasks.
         </h4>
       </div>
     </div>
@@ -221,21 +223,15 @@
         <h2 class="title is-2">Summary</h2>
         <div class="content has-text-justified">
           <ul>
-            <li>We introduce a novel test-time normalization scheme <strong>(UnMix-TNS)</strong> designed to withstand the
-challenges posed by label temporal correlation of test data streams.</li>
+            <li>We introduce a novel self-supervised learning (SSL) approach <strong>(CrIBo)</strong> tailored to enhance dense visual representation learning. To the best of our knowledge, <strong>CrIBo</strong> is the first end-to-end online SSL approach that explicitly enforces cross-image consistency at the object/object-part level.</li>
             <li>
-              <strong>UnMix-TNS</strong> demonstrates robustness across various test-time distribution shifts such as <strong>single domain</strong>, and <strong>continual domain</strong>. While not primarily designed for <strong>mixed domain</strong> settings, it offers a level of adaptability in these scenarios. Additionally, the method excels with small batch sizes, even down to individual samples.
+              <strong>CrIBo</strong> emerges as a notably strong and adequate candidate for <em>in-context scene understanding</em> tasks without compromising the performance on standard segmentation benchmarks.
             </li>
             <li>
-              <strong>UnMix-TNS</strong> layers, with <strong>negligible inference latency</strong>, seamlessly integrate into pre-trained neural
-network architectures, fortified with BN layers, augmenting test-time adaptation strategies while
-incurring minimal overhead.
-            </li>
-            <li>
-              We present empirical evidence showcasing significant performance improvements of state-of-the-art TTA methods in non-i.i.d. settings when augmented with <strong>UnMix-TNS</strong>, as benchmarked
-on datasets involving common corruptions shifts and natural shifts.
+              <strong>CrIBo</strong> shows state-of-the-art performance on dense nearest neighbor retrieval task, compatible with scene-centric datasets, addressing a gap in the existing cross-image SSL literature.
             </li>
           </ul>
+
         </div>
       </div>
     </div>
@@ -250,32 +246,17 @@ on datasets involving common corruptions shifts and natural shifts.
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-six-fifths">
-          <h2 class="title is-3">Motivation</h2>
           <div class="content has-text-justified">
-            <p>
-              To elucidate the motivation of our method, let's compare it with the conventional approach of test-time batch normalization (TBN), using a toy example for clarity.
-              <ol type="1">
-                <li><b>I.I.D Setting</b>. <span style="font-size: 95%;">Under i.i.d setting, the feature statistics estimated from the current batch (pink dots) is close to the true statistics of the test distribution. </span></li>
-                <li><b>Non-I.I.D Setting</b>. <span style="font-size: 95%;">Under non-i.i.d. setting (i.e. when the test features are label temporally correlated), the feature statistics estimated from the current batch are biased towards one category.</li>
-                <li><b>Our Method.</b> To address this imbalance issue, we introduce a novel strategy termed <it><b>UnMix-TNS</b> (<b>Un-Mix</b>ing <b>T</b>est-Time <b>N</b>ormalization <b>S</b>tatistics)</it> simulating the i.i.d. setting by splitting the statistics of the test distribution into K components (4 in this example), and estimating them using only the test features closest to the individual component.</li>
 
-
-                  <div style="display: flex; justify-content: space-around; align-items: center;">
+                  <div style="display: flex; justify-content: space-around; align-items: center; margin-top: -50px;">
 
   <!-- First subfigure -->
-  <img id="teaser1" src="images/ref.png" alt="unmix-tns" style="max-width: 430px; margin-top: -20px;">
+  <img src="images/attrappe_oeil3_compressed.png" alt="Positioning of CriBO in the landscape of self-supervised learning" style="width: 100%;">
 
-  <!-- Second subfigure -->
-  <img id="teaser2" src="images/tbn_iid.gif" alt="another-image" style="max-width: 300px;">
-
-  <!-- Add more subfigures as needed -->
-  <img id="teaser3" src="images/tbn_non_iid.gif" alt="yet-another-image" style="max-width: 300px;">
-  <!-- Add more subfigures as needed -->
-  <img id="teaser4" src="images/unmix_tns_non_iid.gif" alt="yet-last-image" style="max-width: 300px;">
 
 </div>
           <figcaption style="text-align: center;">
-            <strong>Figure:</strong> Illustration comparing UnMix-TNS with the TBN approach using a toy example in i.i.d. and non-i.i.d. settings.
+            <strong>Figure:</strong> <strong>Positioning of CriBO in the landscape of self-supervised learning.</strong> <strong>a)</strong> Illustration of the cross-image self-supervision concept. <strong>c)</strong> Depiction of object-level self-supervision. <strong>b)</strong> CrIBo benefits from both learning paradigms.
           </figcaption>
               </ol>
            </p>
@@ -292,48 +273,69 @@ on datasets involving common corruptions shifts and natural shifts.
     <div class="column is-full-width">
     <div class="container is-max-desktop">
     <div class="container is-max-desktop">
-      <h2 class="title is-2">Method: UnMix-TNS</h2>
+      <h2 class="title is-2">Method: CrIBo</h2>
+      Our method, <strong>CrIBo</strong>, is realized through the following steps:
+<ol>
+    <li>Identify semantically coherent regions within the image to create object-level representations.</li>
+    <li>Match pairs of object-level representations across images.</li>
+    <li>Apply cross-image consistency between pairs of matching object-level representations.</li>
+</ol>
+<div class="image-container">
+<figure>
+  <img id="taskaffinity" src="images/cribo_m.png" alt="Task Affinity Diagram">
+  <figcaption style="text-align: center;">
+    <strong>Figure:</strong> <strong>High-level overview of cross-image object-level bootstrapping (CrIBo).</strong> Given an encoder <em>f</em> and a pair of augmented views, described as <span style="font-style: italic;">x&#x0303;<sub>1</sub></span> and <span style="font-style: italic;">x&#x0303;<sub>2</sub></span>, object representations <em>c<sub>i</sub><sup>k</sup></em> (depicted as colored object masks) from each view <em>i</em> are computed. Using a memory bank, the nearest neighbors of each object representation <em>c<sub>1</sub><sup>k</sup></em> from the first view are retrieved. A self-supervised consistency loss (depicted as colored arrows) is then enforced between <em>c<sub>2</sub><sup>k</sup></em> and its corresponding retrieved neighbor from the other view, <em>NN(c<sub>1</sub><sup>k</sup>)</em>.
+
+</figure>
+</div>
+
       <div class="content">
-          <h2 class="title is-4"> 1. Distribution of \(K\) UnMix-TNS Components Mixture</h2>
-          <div class="image-container">
-          <figure>
-            <img id="taskaffinity" src="images/unmixtns_method.png" alt="Task Affinity Diagram">
-            <figcaption style="text-align: center;">
-              <strong>Figure:</strong> <strong>An Overview of UnMix-TNS.</strong> Given a batch of non-i.i.d test features \( \mathbf{z^t} \in \mathbb{R}^{B \times C \times L} \) at a temporal instance \( t \), we mix the instance-wise statistics \( (\tilde{\mu}^t, \tilde{\sigma}^t) \in \mathbb{R}^{B \times C} \) with \( K \) UnMix-TNS components. The alignment of each sample in the batch with the UnMix-TNS components is quantified through similarity-derived assignment probabilities \( p_k^t \). This aids both the <em>mixing</em> process and subsequent component updates for time \( t+1 \).
-          </figure>
-        </div>
-          <p>Let \( [\mu_1^t, \dots, \mu_K^t] \) and \( [\sigma_1^t, \dots, \sigma_K^t] \) denote the statistics of the \( K \) components within the UnMix-TNS layer at a given temporal instance \( t \), where each \( \mu_k^t, \sigma_k^t \in \mathbb{R}^C \). We articulate the distribution \( h_Z^t(z) \) of instance-wise test features \( z \in \mathbb{R}^C \) marginalized over all labels at a temporal instance \( t \) using the \( K \) components:</p>
+          <h2 class="title is-4"> 1. Semantically Coherent Image Regions</h2>
+          <p>The first step towards cross-image object-level bootstrapping is to identify semantically coherent image regions within the images. To that end, we rely on an online joint-space clustering algorithm from <a href="https://behzadbozorgtabar.com/CrOC.html">[Stegmuller_2023_CVPR]</a>.</p>
+          <h4>Joint-space clustering.</h4>
+          <div>The clustering algorithm takes as input the dense representations <span class="math-tex" data-latex="\mathbf{z}_1 \in \mathbb{R}^{N \times d}">\( \mathbf{z}_1 \in \mathbb{R}^{N \times d} \)</span> and <span class="math-tex" data-latex="\mathbf{z}_2 \in \mathbb{R}^{N \times d}">\( \mathbf{z}_2 \in \mathbb{R}^{N \times d} \)</span> associated with the two augmented views and concatenates them along the token axis to obtain the dense representation of the joint-view, <span class="math-tex" data-latex="\mathbf{z}_{\text{cat}} \in \mathbb{R}^{2N \times d}">\( \mathbf{z}_{\text{cat}} \in \mathbb{R}^{2N \times d} \)</span>. The <span class="math-tex" data-latex="2N">\( 2N \)</span> tokens are subsequently partitioned into <span class="math-tex" data-latex="K">\( K \)</span> clusters to produce semantically coherent and spatially compact clusters. A hyperparameter <span class="math-tex" data-latex="\lambda_{\text{pos}}">\( \lambda_{\text{pos}} \)</span> modulates the importance of the spatiality against that of the semantic. The resulting assignment is encoded in a matrix <span class="math-tex" data-latex="\mathbf{Q}^{*} \in \mathbb{R}^{2N \times K}">\( \mathbf{Q}^{*} \in \mathbb{R}^{2N \times K} \)</span>, which can be split in two to obtain the view-wise assignments <span class="math-tex" data-latex="\mathbf{Q}^{*}_1, \mathbf{Q}^{*}_2 \in \mathbb{R}^{N \times K}">\( \mathbf{Q}^{*}_1, \mathbf{Q}^{*}_2 \in \mathbb{R}^{N \times K} \)</span>. Here <span class="math-tex" data-latex="\mathbf{Q}^{*}_i(n,k)">\( \mathbf{Q}^{*}_i(n,k) \)</span> denotes a soft-assignment of token <span class="math-tex" data-latex="n">\( n \)</span> to object-cluster <span class="math-tex" data-latex="k">\( k \)</span> in view <span class="math-tex" data-latex="i">\( i \)</span>. These can in turn be used to compute the <span class="math-tex" data-latex="K">\( K \)</span> object representations <span class="math-tex" data-latex="\mathbf{c}_i \in \mathbb{R}^{d}">\( \mathbf{c}_i \in \mathbb{R}^{d} \)</span> in each view <span class="math-tex" data-latex="i">\( i \)</span> as follows:</div>
+          <p>
+\[ \mathbf{c}_i^k = \sum_{n \in [N]} \mathbf{Q}^{*}_i(n,k) \cdot \mathbf{z}_i^n,\quad i \in \{1,2\} \]
+</p>
 
-<p>\[ h_{Z_c}^t(z_c) = \frac{1}{K}\sum_k \mathcal{N}(\mu_{k,c}^t, \sigma_{k,c}^t), \]</p>
-
-<p>where \( \mathcal{N} \) represents the Normal distribution function. Given only \( (\mu_k^t, \sigma_k^t)_{k=1}^{K} \), one can derive the label unbiased normalization test statistics \( (\bar{\mu}^t, \bar{\sigma}^t) \) at time \( t \) as follows:</p>
-
-<p>\[
-\bar{\mu}^t = \mathbb{E}_{h_{Z_c}^t}[z_c]=\frac{1}{K}\sum_k \mu_{k,c}^t,
-\]</p>
-
-<p>\[
-(\bar{\sigma}^t)^2 = \mathbb{E}_{h_{Z_c}^t}[(z_c-\bar{\mu}^t)^2]=\frac{1}{K}\sum_k (\sigma_{k,c}^t)^2 + \frac{1}{K}\sum_k (\mu_{k,c}^t)^2 - \Big(\frac{1}{K}\sum_k\mu_{k,c}^t\Big)^2,
-\]</p>
-
-<p>Subsequent sections will delve into the initialization scheme for the \( K \) UnMix-TNS components and elucidate the process of updating their individual statistics \( (\mu_k^t, \sigma_k^t) \) at temporal instance \( t \).</p>
-
+          <div>Note that the columns of <span class="math-tex" data-latex="\mathbf{Q}^{*}_i">\( \mathbf{Q}^{*}_i \)</span> undergo <span class="math-tex" data-latex="l_1">\( l_1 \)</span> normalization, rendering the object representations as affine combinations of local representations. observed that the cross-view correspondence is provided for free as the object representation <span class="math-tex" data-latex="\mathbf{c}_1^k">\( \mathbf{c}_1^k \)</span> from the first view is matched to <span class="math-tex" data-latex="\mathbf{c}_2^k">\( \mathbf{c}_2^k \)</span> in the second one as a consequence of the joint-space clustering. In practice, it can be the case that some objects are exclusive to one of the two views, i.e., <span class="math-tex" data-latex="\sum_{n \in [N]} \mathbf{Q}^{*}_i(n,k) = 0">\( \sum_{n \in [N]} \mathbf{Q}^{*}_i(n,k) = 0 \)</span>. In that case, the object <span class="math-tex" data-latex="k">\( k \)</span> is simply discarded from the view where it is present.
         </div>
       </div>
       <br>
         <!-- Task Affinity -->
         <div class="content">
-          <h2 class="title is-4">2. Initializing UnMix-TNS Components</h2>
+          <h2 class="title is-4">2. Cross-Image Object Matchings</h2>
           <div class="flex-container">
 
             <!-- Text Container -->
             <div class="text-container">
-              <p>Consider the pair \( (\mu,\sigma) \in \mathbb{R}^C \), which stands as the stored means and standard deviation of the features in a given BN layer of \( f_\theta \), derived from the source training dataset before adaptation.</p>
-              <p>We initialize statistics \( (\mu_k^t, \sigma_k^t) \) of \( K \) components of UnMix-TNS at \( t=0 \), as delineated in the following Equation:</p>
+              <p>In the section on semantically coherent image regions, we detail the methodology for identifying objects within the views of a given image and establish the strategy for their alignment from one view to another. Following this step is the critical phase of aligning such objects across images. We rely on a pair of memory banks \( \mathcal{M}_1 \) and \( \mathcal{M}_2 \), populated with object representations extracted from the first and second views during previous iterations. Thus, the memory banks \( \mathcal{M}_{i} \) can be queried with an object representation \( \mathbf{c}_i^k \) to retrieve its nearest neighbor:</p>
               <p>\[
-              \mu_{k,c}^0 = \mu_c + \sigma_c \sqrt{\frac{\alpha \cdot K}{K-1}} \cdot \zeta_{k,c}, \quad \sigma_{k,c}^0 = \sqrt{1-\alpha}\cdot\sigma_c, \quad \zeta_{k,c} \sim \mathcal{N}(0, 1)
+              \text{NN}(\mathbf{c}_i^k, \mathcal{M}_i) \triangleq \underset{\mathbf{c} \in \mathcal{M}_i}{\arg\max} \frac{\mathbf{c}^\top \mathbf{c}_i^k}{\| \mathbf{c} \|_2 \| \mathbf{c}_i^k \|_2}
               \]</p>
-              <p>where \( \zeta_{k,c} \) is sampled from the standard normal distribution \( \mathcal{N}(0, 1) \), and \( \alpha \in (0, 1) \) is a hyperparameter that controls the extent to which the means of the UnMix-TNS components deviate from the stored means of BN layer during initialization. Note that the initial normalization statistics \( (\bar{\mu}^0, \bar{\sigma}^0) \) estimated from \( (\mu_k^0, \sigma_k^0) \) have an expected value equal to the stored statistics of the BN layer, i.e., \( \mathbb{E}[\bar{\mu}^0_k]=\mu \) and \( \mathbb{E}[(\bar{\sigma}^0_k)^2] = \sigma^2 \) for all values of \( \alpha \). </p>
+
+<p>Here, we consider \( \text{NN}(\mathbf{c}^k_1, \mathcal{M}_{1}) \) and \( \mathbf{c}_1^k \) as cross-image object-level matches.
+<h4>Cycle-consistent matchings.</h4>
+<div class="figure">
+    <img src="images/cribo_cc.png" alt="Illustration of cycle-consistent matchings" style="width:100%;">
+    <p class="caption"><strong>Figure: </strong>Illustration of cycle-consistent matchings. Such matchings are invariant to data augmentations and reciprocal, loosely speaking.</p>
+</div>
+<p>At the beginning of the pretraining phase, when the encoder is randomly initialized, relying on the nearest neighbor operator to identify cross-image object-level matches is not well grounded. Indeed, this straightforward approach assumes that the representations of similar objects are close in the embedding space, an assumption that does not hold at the initialization. Therefore, enforcing consistency between such pairs of semantically distinct objects should be avoided. To that end, we design a <em>semantic closeness</em> condition, which is only fulfilled when the matches are established based on high-level features, thus enabling the discarding of invalid positive pairs that do not share a semantic similarity.</p>
+
+<p>At a high level, we consider a pair of objects as a valid positive pair if they are the nearest neighbors of each other. In practice, the criterion is implemented as follows. Starting from an object representation \( \mathbf{c}_1^k \) in the batch of first views, its nearest neighbor \( \texttt{nn}(\mathbf{c}_1^k, \mathcal{M}_1) \) in the queue is found using the nearest neighbor operator. To ensure that the criterion is invariant to data augmentation, we then switch to the queue of second views via the \( \texttt{jump}(\cdot) \) operator:</p>
+<p>\[ \texttt{jump}(\mathbf{c}_1^k) \triangleq \mathbf{c}_2^k, \quad \quad \texttt{jump}(\mathbf{c}_2^k) \triangleq \mathbf{c}_1^k \]</p>
+<p>From this step, we obtain \( \texttt{jump}(\texttt{nn}(\mathbf{c}_1^k, \mathcal{M}_1)) \) and retrieve its NN in the batch of second views \( \texttt{nn}(\texttt{jump}(\texttt{NN}(\mathbf{c}_1^k, \mathcal{M}_1)), \mathcal{B}_{2}) \). The final step consists of switching back to the batch of first views and verifying if the resulting object is the same as the one we started from. More formally:</p>
+<p>\[
+  \mathcal{O}(\mathbf{c}_i^k) \triangleq
+    \begin{cases}
+      true & \text{if} \quad \mathbf{c}_i^k = \texttt{jump}(\texttt{nn}(\texttt{jump}(\texttt{nn}(\mathbf{c}_i^k, \mathcal{M}_i)), \mathcal{B}_j))\\
+      false & \text{otherwise}
+    \end{cases}
+    \quad i, j \in \{1, 2\}, i \neq j
+\]</p>
+
+
+
 
             </div>
           </div>
@@ -341,50 +343,57 @@ on datasets involving common corruptions shifts and natural shifts.
         <br>
 
         <div class="content">
-          <h2 class="title is-4">3. Redefining Feature Normalization through UnMix-TNS</h2>
-          <p>Considering the current batch of temporally correlated features \( \mathbf{z}^t \in \mathbb{R}^{B \times C \times L} \), we commence by calculating the instance-wise means and standard deviation \( (\tilde{\mu}^t, \tilde{\sigma}^t) \in \mathbb{R}^{B \times C} \), mirroring the Instance Normalization, i.e.:</p>
+          <h2 class="title is-4">3. Self-Supervised Training Objectives</h2>
+          <p> CrIBo’s final training  objective involves three distinct types of self-supervision: cross-view object-level, cross-image object-level, and global cross-image. All levels of self-supervision are based on the self-distillation mechanism, which employs a student-teacher pair of siamese networks \(f_s\) and \(f_t\), respectively. Given two augmented views \(\tilde{\boldsymbol{x}}_1\) and \(\tilde{\boldsymbol{x}}_2\), global representations and object representations can be obtained for each view and each network within the siamese pair.</p>
+
+<h4>Cross-View Object-Level Self-Supervision</h4>
+<p>The object representations from the teacher and student are fed to their respective head \(h_s\) and \(h_t\) to output probability mass functions whose sharpness can be modulated via temperature parameters (\(\tau_{s}\) and \(\tau_{t}\)). For the teacher, this translates to:</p>
+<p>\[
+\mathbf{p}_{i,t}^k = \texttt{softmax}\left(\text{head}_{t}(\mathbf{c}_{i,t}^k) / \tau_{t} \right),  \quad i \in \{1,2\}
+\]</p>
+<p>The student's projections are obtained analogously. The cross-view object-level loss is expressed as the averaged cross-entropy over all pairs of object representations and making the loss symmetric with respect to the student/teacher:</p>
+<p>\[
+\mathcal{L}_{cv}^{o} = \frac{1}{K}\sum_{k \in [K]} \left( H(\mathbf{p}_{1,t}^k, \mathbf{p}_{2,s}^k) +  H(\mathbf{p}_{2,t}^k, \mathbf{p}_{1,s}^k) \right)
+\]</p>
+<p>where \(H(\mathbf{a}, \mathbf{b}) = -\sum_{l=1}^{L} \mathbf{a}_{l} \log (\mathbf{b}_{l})\) denotes the cross-entropy.</p>
+
+
+
+<h4>Cross-Image Object-Level Self-Supervision</h4>
+<p>Once all object representations in the batch have been retrieved, the cross-image object-level loss is enforced in a manner analogous to its cross-view counterpart. The nearest neighbors are first fed to the projection head as follows:</p>
+<p>\[
+\tilde{\mathbf{p}}_{i,t}^{k} = \texttt{softmax}\left(h_{t}(\texttt{nn}(\mathbf{c}_{i,t}^k)) / \tau_{t} \right),  \quad i \in \{1,2\}
+\]</p>
+<p>Note that these projections are only defined for the teacher since the \(\texttt{nn}(\cdot)\) operator is not differentiable. The formulation of the cross-image object-level loss aligns with that in the cross-view loss up to the filtering of invalid positive pairs:</p>
 
 <p>\[
-\tilde{\mu}^t_{b,c} = \frac{1}{L}\sum_{l} \mathbf{z}^t_{b,c,l},\quad \tilde{\sigma}^t_{b,c} =\sqrt{\frac{1}{L} \sum_l(\mathbf{z}^t_{b,c,l} - \tilde{\mu}^t_{b,c})^2},
+\mathcal{L}_{ci}^{o} = \frac{1}{Z_1}\sum_{k \in [K]} \mathbb{1}_{\{\mathcal{O}(\mathbf{c}_1^k)\}} H(\tilde{p}_{1,t}^{k}, p_{2,s}) +  \frac{1}{Z_2}\sum_{k \in [K]} \mathbb{1}_{\{\mathcal{O}(\mathbf{c}_2^k)\}} H(\tilde{p}_{2,t}^{k}, p_{1,s})
 \]</p>
 
-<p>To gauge the likeness between UnMix-TNS components and current test features, we compute the cosine similarity \( s^t_{b,k} \) of the current instance-wise means \( \tilde{\mu}^t_{b,:} \) with that of \( K \) BN components \( \left \{ \mu_k^t \right \}_{k=1}^{K} \) as follows:</p>
+<p>where \( \mathbb{1}_{\{\cdot\}} \) denotes the indicator function and where \( Z_1 \) and \( Z_2 \) are normalization constants, i.e., \( \sum_{k \in [K]} \mathbb{1}_{\{\mathcal{O}(\mathbf{c}_1^k)\}} \) and \( \sum_{k \in [K]} \mathbb{1}_{\{\mathcal{O}(\mathbf{c}_2^k)\}} \), respectively.</p>
 
-<p>\[
-s_{b,k}^t = \texttt{sim}\left ( \tilde{\mu}^t_{b,:},\mu_k^t \right ),
-\]</p>
+  <h4>Global Cross-View Self-Supervision</h4>
+  <p>Importantly, both the clustering and the bootstrapping steps are contingent on the quality of the representations. To avoid potential instabilities, we incorporate a global cross-view loss into our framework, offering meaningful self-supervision at any stage of the pretraining. This loss is analogous to the one from the cross-view object-level loss except that it is applied to the global representation (\(\mathbf{z}_{1,s}\), \(\mathbf{z}_{2,s}\), \(\mathbf{z}_{1,t}\), and \(\mathbf{z}_{2,t}\)), which are fed to a dedicated head \( \overline{h} \):</p>
 
-<p>where \( \texttt{sim}(\mathbf{u},\mathbf{v})=\frac{\mathbf{u}^T\mathbf{v}}{\|\mathbf{u}\|\|\mathbf{v}\|} \) denote the dot product between \( l_2 \) normalized \( \mathbf{u} \) and \( \mathbf{v} \in \mathbb{R}^C \).</p>
-
-<p>We proceed to derive the refined feature statistics, denoted as \( (\bar{\mu}^t, \bar{\sigma}^t) \in \mathbb{R}^{B \times C} \) for each instance. This is accomplished by a weighted mixing of the current instance statistics, \( (\tilde{\mu}^t, \tilde{\sigma}^t) \), harmoniously blended with the \( K \) BN statistics components, \( (\mu_k^t, \sigma_k^t)_{k=1}^K \). This mixing strategy unfolds similar to as:</p>
-
-<p>\[
-\bar{\mu}^t_{b,c} = \frac{1}{K}\sum_{k}\hat{\mu}^t_{b,k,c},
-\]</p>
-
-<p>\[
-(\bar{\sigma}^t_{b,c})^2 = \frac{1}{K}\sum_{k}(\hat{\sigma}^t_{b,k,c})^2 + \frac{1}{K}\sum_{k}(\hat{\mu}^t_{b,k,c})^2 - \left(\frac{1}{K}\sum_k \hat{\mu}^t_{b,k,c}\right)^2,
-\]</p>
-
-<p>\[
-\hat{\mu}^t_{b,k,c} = (1-p_{b,k}^t) \cdot \mu_{k,c}^t + p_{b,k}^t \cdot \tilde{\mu}^t_{b,c}, \quad (\hat{\sigma}^t_{b,k,c})^2 =  (1-p_{b,k}^t) \cdot (\sigma_{k,c}^t)^2 + p_{b,k}^t \cdot (\tilde{\sigma}^t_{b,c})^2,
-\]</p>
-
-<p>In this formulation, \( p_{b,k}^t = \frac{\exp(s^t_{b,k}/\tau)}{\sum_\kappa \exp(s^t_{b,k}/\tau)} \) represents the assignment probability of the \( b^{th} \) instance's statistics in the batch belonging to the \( k^{th} \) statistics component. Note that, \( p_{b,k}^t\approx 1 \) if \( b^{th} \) instance exhibits a greater affinity to the \( k^{th} \) component, and vice-versa. We employ the refined feature statistics \( (\bar{\mu}^t, \bar{\sigma}^t) \) to normalize \( \mathbf{z}^t \), yielding elaborated upon below:
+  <p>The global cross-view projections are defined as follows:</p>
   <p>\[
-\hat{\mathbf{z}}_{b,c,:}^t = \gamma_c \cdot \frac{\mathbf{z}_{b,c,:}^t - \bar{\mu}_{b,c}^t}{\bar{\sigma}^t_{b,c}} + \beta_c,
-\]</p>
+  \overline{p}_{i,t} = \texttt{softmax} \left(\overline{h}_{t}(\mathbf{z}_{i,t}) / \overline{\tau}_{t}\right), \quad i \in \{1,2\}
+  \]</p>
+  <p>where \(\overline{\tau}_{s}\) and \(\overline{\tau}_{t}\) are the corresponding temperature parameters for the \(\overline{L}\)-dimensional output distribution. The global cross-view loss is defined as:</p>
+  <p>\[
+  \mathcal{L}_{cv}^{g} = H(\overline{p}_{1,t}, \overline{p}_{2,s}) +  H(\overline{p}_{2,t}, \overline{p}_{1,s})
+  \]</p>
+  <p>where \(H(\mathbf{a}, \mathbf{b}) = -\sum_{l=1}^{\overline{L}} \mathbf{a}_{l} \log (\mathbf{b}_{l})\).</p>
 
-<p>In the concluding steps, all \(K\) BN statistics components undergo refinement. This is achieved by updating them based on the weighted average difference between the current instance statistics, with weights drawn from the corresponding assignment probabilities across the batch:</p>
 
-<p>\[
-\mu_{k,c}^{t+1} \leftarrow \mu_{k,c}^t + \frac{\lambda}{B}\sum_{b} p_{b,k}^t \cdot (\tilde{\mu}^t_{b,c} - \mu_{k,c}^t),
-\]</p>
 
-<p>\[
-(\sigma_{k,c}^{t+1})^2 \leftarrow (\sigma_{k,c}^t)^2 + \frac{\lambda}{B}\sum_{b} p_{b,k}^t \cdot ((\tilde{\sigma}^t_{b,c})^2 - (\sigma_{k,c}^t)^2),
-\]</p>
-<p>where \( \lambda \) is the momentum hyperparameter and is set based on the principles of momentum batch normalization. The more a statistic component is closely aligned with the instance-wise statistics in the test batch (precisely when \( p_{b,k}^t \approx 1 \)), the more it undergoes a substantial update.</p>
+  <p>Finally, we obtain the overall training objective of CrIBo as a sum of its individual components:</p>
+  <p>\[
+  \mathcal{L}_{\text{tot}} = \mathcal{L}_{cv}^{g} + \mathcal{L}_{cv}^{o} + \mathcal{L}_{ci}^{o}
+  \]</p>
+  <p>The student's parameters are optimized to minimize the above loss whereas the parameters of the teacher are updated via an exponential moving average of the student's weights.</p>
+
+
 
 
           </div>
@@ -399,46 +408,38 @@ s_{b,k}^t = \texttt{sim}\left ( \tilde{\mu}^t_{b,:},\mu_k^t \right ),
       <div class="container is-max-desktop">
         <h2 class="title is-2">Experimental Results</h2>
 
-        <h2 class="title is-4"> 1. UnMix-TNS showcases superior adaptability  under non-i.i.d. test-time adaptation across corruption benchmarks</h2>
+        <h2 class="title is-4"> 1. CrIBo shows state-of-the-art performance on dense nearest neighbor retrieval task</h2>
 
         <br> </br>
-        <img id="taskaffinity" src="images/Non-i.i.d._corruption.png">
+        <img id="taskaffinity" src="images/Cribo_retrieval.png">
         <figcaption style="text-align: center;">
-          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on corruption benchmarks.</strong> Averaged online classification error rate (in %) across 15 corruptions at severity level 5 on CIFAR10-C, CIFAR100-C, and ImageNet-C, comparing <em>single</em>, <em>continual</em>, and <em>mixed</em> domain adaptation. Averaged over three runs.
+          <strong>Figure:</strong> <strong>Dense nearest neighbor retrieval</strong>. The quality of the learned spatial features is probed with a k-NN classifier and using different ratios of training data. The depicted mIoU scores are derived from the validation sets of two scene-centric datasets. \( \dagger \) refers to our own reproduction from official GitHub repositories. If not specified, publicly available checkpoints are used. \( \star \) denotes results taken from <a href="https://arxiv.org/pdf/2306.01667.pdf">[Balavzevic et al. (2023)]</a>.
+
 
         </figcaption>
         <br> </br>
 
-        <h2 class="title is-4"> 2. UnMix-TNS excels in non-i.i.d. test-time adaptation across natural domain benchmark</h2>
+        <h2 class="title is-4"> 2. CrIBo exhibits commendable performance in linear segmentation</h2>
         <br> </br>
-        <img id="taskaffinity" src="images/Non-i.i.d._natural.png">
+        <img id="taskaffinity" src="images/cribo_linear.png">
         <figcaption style="text-align: center;">
-          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on natural shift benchmark (DomainNet-126).</strong> Online classification error rate (in %) depicted for each source domain, averaged across the other target domains. A comparative analysis between <em>single</em>, <em>continual</em>, and <em>mixed</em> domain adaptation is presented. Averaged over three runs.
+          <strong>Figure:</strong> <strong>Linear segmentation with frozen backbones.</strong> The linear decoder from <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Strudel_Segmenter_Transformer_for_Semantic_Segmentation_ICCV_2021_paper.pdf">[Segmenter]</a> is trained on the frozen spatial features obtained with various self-supervised learning methods. We report the mIoU scores achieved on the validation sets of 4 different datasets. \( \dagger \) refers to our own reproduction from official GitHub repositories. If not specified, publicly available checkpoints are used.
+
 
         </figcaption>
         <br> </br>
 
-        <h2 class="title is-4"> 3. UnMix-TNS adeptly handles non-i.i.d. test-time shifts within corrupted video datasets </h2>
-        <p>
-          We introduce the ImageNet-VID-C and LaSOT-C video datasets, applying synthetic corruptions to real-world non-i.i.d datasets of ImageNet-VID and LaSOT to simulate realistic domain shifts for frame-wise video classification.
-        </p>
+        <h2 class="title is-4"> 3. CrIBo adeptly evolve into remarkable specialists </h2>
+
         <br> </br>
-        <img id="taskaffinity" src="images/Non-i.i.d._videos.png">
+        <img id="taskaffinity" src="images/cribo_finetuning.png">
         <figcaption style="text-align: center;">
-          <strong>Figure:</strong> <strong>Non-i.i.d. test-time adaptation on corrupted video datasets.</strong> We adapt the ResNet-50 backbone trained on ImageNet on the sequential frames of ImageNet-VID-C and LaSOT-C and report classification error rates (%). <sup>&dagger;</sup> denotes methods using UnMix-TNS layers.
+          <strong>Figure:</strong> <strong>Finetuning evaluation with Segmenter.</strong> Backbones pre-trained with different self-supervised learning methods are finetuned using <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Strudel_Segmenter_Transformer_for_Semantic_Segmentation_ICCV_2021_paper.pdf">[Segmenter]</a>. We report the mIoU scores achieved on the validation sets of 4 different datasets. \( \dagger \) refers to our own reproduction from official GitHub repositories. If not specified, publicly available checkpoints are used.
+
         </figcaption>
         <br> </br>
 
-        <h2 class="title is-4"> 4. Efficient adaptation to test sample correlation and batch size variability </h2>
-    <p>This study, in line with recent findings, employs the Dirichlet distribution to synthesize test streams with variable correlations using the concentration parameter &delta;, exploring its effect on domain adaptation in both continual and mixed scenarios. A reduction in &delta; not only intensifies test sample correlation and category aggregation, as shown in experiments on the CIFAR100-C dataset, but also reduces the performance of traditional batch normalization techniques due to their inability to account for increased sample correlation. However, UnMix-TNS stands out for its resilience across varying &delta; values, proving its efficacy in handling non-i.i.d. test-time conditions.</p>
-    <p>In addition to correlation impact, the study also delves into how different batch sizes, ranging from 1 to 256, affect domain adaptation. The results indicate that larger batch sizes generally lower error rates for conventional normalization methods, except for &alpha;-BN, which shows a unique performance curve. This suggests that larger batches, by including more categories, reduce label correlation, with &alpha;-BN performing best at a batch size of 1 due to its unique normalization strategy. Remarkably, UnMix-TNS maintains consistent superiority, unaffected by batch size changes, thereby affirming its robustness across diverse adaptation contexts.</p>
 
-        <br> </br>
-        <img id="taskaffinity" src="images/unmix-tns_ablation.png">
-        <figcaption style="text-align: center;">
-          <strong>Figure:</strong> <strong>Ablation study</strong> on the impact of (a) Dirichlet parameter, &delta;, and (b) batch size on CIFAR100-C, comparing several test-time normalization methods including TBN, &alpha;-BN, RBN, and UnMix-TNS.
-        </figcaption>
-        <br> </br>
 
 
       </div>
@@ -447,72 +448,16 @@ s_{b,k}^t = \texttt{sim}\left ( \tilde{\mu}^t_{b,:},\mu_k^t \right ),
 
 
 
-  <section class="section">
-    <div class="column is-full-width">
-    <div class="container is-max-desktop">
-    <div class="container is-max-desktop">
-      <h2 class="title is-2">Theoretical Insights into UnMix-TNS Adaptation</h2>
-      <div class="content">
 
-        <p>Let \(h(z)\) be the true distribution of the test domain features. We assume that \(h(z)\) can be decomposed as a mixture of \(K\) Gaussian distributions \(\{h_k(z)\}_{k=1}^K\), such that \(h(z) = \frac{1}{K}\sum_k h_k(z)\). Additionally, we postulate the existence of a perfect classifier \(F:Z\to (Y,K)\) that deterministically assigns each feature \(z\) to its corresponding label \(y\) and component \(k\), expressed as \((y, k) = F(z)\).</p>
-
-        <p>In the context of independent and identically distributed (i.i.d.) features, each \(z\) is uniformly sampled over time with respect to its corresponding label \(y\) (unknown to the learner), and thus the expected value of the mean (utilized for normalization) of the current batch can be calculated as follows:</p>
-
-        <p>\[
-        \mathbb{E}[\mu_\text{batch}] = \mu^* = \sum_{y, k}\int z \cdot h(z, y, k) dz = \sum_{y,k} \int z \cdot h(z|k)h(y|z,k)h(k) dz
-        \]</p>
-
-
-        <p>where \(h(z,y,k)\) represents the joint distribution of the features \(z\), labels \(y\) and the component \(k\). The term \(h(z|k) = h_k(z)\) denotes the probability distribution of the features given a particular component \(k\), while \(h(k) = \frac{1}{K}\) implies that each component is equally likely. Furthermore, \(h(y|z,k)\) is the conditional probability distribution of the labels given the features \(z\) and the component \(k\). Since the perfect classifier \(F\) allows for the deterministic determination of \(y, k\) from \(z\), it follows that \(\sum_y h(y|z,k) = 1\). This can be rearticulated in the above equation for estimating the expected mean \(\mu^*\) as follows:</p>
-
-        <p>\[
-        \mu^* = \frac{1}{K}\sum_{y,k} \int z \cdot h_k(z)h(y|z,k)dz = \frac{1}{K}\sum_{k} \int z \cdot h_k(z)dz = \frac{1}{K} \sum_k \mu^*_k.
-        \]</p>
-
-        <p>where \(\mu^*_k\) is the mean of the \(k^{th}\) component of the true distribution of the test domain features.</p>
-
-        <p>In a non-i.i.d. scenario, we sample the features <span class="math" data-equation="z"></span> to ensure a temporal correlation with their corresponding labels <span class="math" data-equation="y"></span>. As a result, the true test domain distribution <span class="math" data-equation="h(z)"></span> at a given time <span class="math" data-equation="t"></span> is approximated as <span class="math" data-equation="\Hat{h}^t(z) = \frac{1}{K} \sum_k \Hat{h}_k^t(z)"></span>, where the distribution of the <span class="math" data-equation="k^{th}"></span> component <span class="math" data-equation="h_k(z)"></span> is approximated as <span class="math" data-equation="\Hat{h}_k^t(z)"></span>. This leads to the estimation of an unbiased normalization mean at time <span class="math" data-equation="t"></span> using <span class="math" data-equation="\Hat{h}^t(z)"></span>, as expressed in the following equation:</p>
-    <p><span class="math" data-equation="\mu_\text{\tiny UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot \Hat{h}_k^t(z) dz."></span></p>
-
-    <p>\[
-    \mu_\text{UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot \hat{h}_k^t(z) dz.
-    \]</p>
-
-    <p>Furthermore, the bias \(\Delta_\text{UnMix-TNS}(t)\) between the mean of the true test-domain distribution \(\mu^*\) and the estimated mean  \(\mu_\text{\tiny UnMix-TNS}(t)\) at time \(t\) can be recorded as:</p>
-
-    <p>\[
-    \Delta_\text{UnMix-TNS}(t) = \frac{1}{K}\sum_k \int z\cdot (h_k(z) - \hat{h}_k^t(z) ) dz = \frac{1}{K}\sum_k(\mu^*_k - \hat{\mu}^t_k)
-    \]</p>
-
-    <p>where \(\hat{\mu}^t_k\) is the estimated mean of the same \(k^{th}\) component at time \(t\). Note that as time progresses and \(t\) increases, \(\hat{\mu}_k^t \rightarrow \mu_k^*\), as we update \(\hat{\mu}_k^t\) using exponential moving average mechanism. Thus, UnMix-TNS can help mitigate the bias introduced in the estimation of feature normalization statistics, which arises due to the time-correlated feature distribution. Conversely, the expected value of the normalization mean estimated using the current batch (TBN) for the non-i.i.d. scenario can be defined as:</p>
-
-    <p>\[
-        \mu_{\text{TBN}}(t) = \sum_{y, k}\int z \cdot h^t(z, y, k) dz = \sum_{y,k} \int z \cdot h(z|k)h(y|z,k)h^t(k) dz = \sum_{k} \int z \cdot h_k(z) h^t(k) dz
-    \]</p>
-
-    <p>where \(h^t(k)\) represents non-i.i.d. characteristics of the test data stream. In this case, the bias is obtained as follows:</p>
-
-    <p>\[
-   \Delta_{\text{TBN}} (t) = \mu^* - \sum_k h^t(k) \mu^*_k
-\]</p>
-
-    <p>This equation indicates that if the test samples are uniformly distributed over time (i.e., in an i.i.d. manner), where \(h^t(k)=1/K\), the estimation of normalization statistics will not be biased. However, in situations where  \(h^t(k)\) smoothly varies with time, favoring the selection of a few components over others, TBN will introduce a non-zero bias in the estimation.</p>
-
-
-
-        </div>
-      </div>
-    </div>
-  </section>
 
 
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">BibTeX</h2>
-    <pre><code>@inproceedings{tomar2024UnMixTNS,
-  title={Un-Mixing Test-Time Normalization Statistics: Combatting Label Temporal Correlation},
-  author={Tomar, Devavrat and Vray, Guillaume and Thiran, Jean-Philippe and Bozorgtabar, Behzad},
+    <pre><code>@inproceedings{Lebailly2024CrIBo,
+  title={CrIBo: Self-Supervised Learning via Cross-Image Object-Level Bootstrapping},
+  author={Lebailly, Tim and Stegm{\"u}ller, Thomas and Bozorgtabar, Behzad and Thiran, Jean-Philippe and Tuytelaars, Tinne},
   booktitle={The Twelfth International Conference on Learning Representations},
   year={2024}
     }
