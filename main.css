@@ -223,3 +223,29 @@ hr {
     line-height: 1.6em;
     margin: 0;
 }
+
+/* Watermark behind the TOP page title only */
+h1::after { content: none; }  /* reset for all H1s */
+
+/* target only the first H1 directly under <body> */
+body > h1{
+  position: relative;
+  z-index: 0;
+}
+body > h1::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(70px, 10vw, 130px);
+  height: clamp(70px, 10vw, 130px);
+  background: url("images/seal-red.png") center/contain no-repeat;
+  opacity: 0.16;                 /* subtle */
+  transform: translate(0, 10px); /* sit just below text center */
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  z-index: -1;                   /* behind the text */
+}
+
+/* Optional hover */
+body > h1:hover::after { opacity: 0.24; }
