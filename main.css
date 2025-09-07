@@ -232,6 +232,44 @@ body > h1{
   position: relative;
   z-index: 0;
 }
+/* variables so you can tweak quickly */
+:root{
+  --seal-color: rgba(214, 24, 24, 0.28); /* red + transparency */
+}
+
+body > h1::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: clamp(70px, 10vw, 130px);
+  height: clamp(70px, 10vw, 130px);
+
+  /* Use the image as a luminance mask (kills the white fringe) */
+  -webkit-mask-image: url("images/seal-red.png");
+  mask-image: url("images/seal-red.png");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  mask-mode: luminance;
+
+  background: var(--seal-color);          /* clean red fill */
+  mix-blend-mode: multiply;               /* sits nicely on gradient */
+  filter: contrast(1.1) saturate(1.05)
+          drop-shadow(0 1px 1px rgba(0,0,0,.10));
+  pointer-events: none;
+  transform: translate(0, 10px);
+  z-index: -1;
+}
+
+/* Optional hover */
+body > h1:hover::after{
+  background: rgba(214, 24, 24, 0.34); /* unchanged */
+}
+
 body > h1::after{
   content: "";
   position: absolute;
@@ -240,12 +278,15 @@ body > h1::after{
   width: clamp(70px, 10vw, 130px);
   height: clamp(70px, 10vw, 130px);
   background: url("images/seal-red.png") center/contain no-repeat;
-  opacity: 0.16;                 /* subtle */
-  transform: translate(0, 10px); /* sit just below text center */
+  opacity: 0.38;                            /* was 0.34 */
+  transform: translate(0, 10px);
   pointer-events: none;
   mix-blend-mode: multiply;
-  z-index: -1;                   /* behind the text */
+  /* slightly more contrast/punch without looking harsh */
+  filter: contrast(1.22) saturate(1.25) brightness(0.97)
+          drop-shadow(0 1px 1px rgba(0,0,0,.14));
+  z-index: -1;
 }
 
-/* Optional hover */
-body > h1:hover::after { opacity: 0.24; }
+/* Optional: slightly stronger on hover */
+body > h1:hover::after { opacity: 0.44; }    /* was 0.40 */
