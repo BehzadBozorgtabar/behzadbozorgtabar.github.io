@@ -224,6 +224,14 @@ hr {
     margin: 0;
 }
 
+.hero-tagline{
+  font-size: 0.95rem;   /* smaller */
+  font-weight: 400;
+  color: #6b7280;       /* soft gray */
+  margin-top: 4px;
+  letter-spacing: 0.2px;
+}
+
 /* Watermark behind the TOP page title only */
 h1::after { content: none; }  /* reset for all H1s */
 
