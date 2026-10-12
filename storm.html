@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STORM: Soft Tactile Memory for Safe Physical-AI Correction of Robotic Foundation Models — Behzad Bozorgtabar</title>
+<meta name="description" content="STORM, an Aarhus University and SDU project funded by Independent Research Fund Denmark, asks how robots can use touch to detect the unexpected and act safely.">
+<meta name="theme-color" content="#0a0a0b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STORM: Soft Tactile Memory for Safe Physical-AI Correction of Robotic Foundation Models">
+<meta property="og:description" content="A project funded by Independent Research Fund Denmark, led from Aarhus University with the University of Southern Denmark, on robots that use touch to detect unexpected changes and correct their actions safely. Starts 1 March 2027.">
+<meta property="og:url" content="https://behzadbozorgtabar.com/storm.html">
+<meta property="og:image" content="https://behzadbozorgtabar.com/media/storm/storm-poster.jpg">
+<link rel="canonical" href="https://behzadbozorgtabar.com/storm.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b5bf75'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' fill='%230a0a0b' text-anchor='middle' font-weight='700'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="storm.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176302866-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176302866-1');
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="index.html">Behzad Bozorgtabar</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      <span class="nav-toggle-bars" aria-hidden="true"></span><span class="visually-hidden">Menu</span>
+    </button>
+    <nav aria-label="Site">
+      <ul class="nav-links" id="site-menu">
+        <li><a href="index.html#research">Research</a></li>
+        <li><a href="index.html#publications">Publications</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li><a href="index.html#lab">A3 Lab</a></li>
+        <li><a href="index.html#misc">Miscellanea</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a class="nav-storm" href="storm.html" aria-current="page">STORM</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Page hero -->
+  <section class="wrap" aria-labelledby="storm-title">
+    <div class="page-hero">
+      <span class="eyebrow">Funded project &middot; Independent Research Fund Denmark &middot; starts 1&nbsp;March&nbsp;2027</span>
+      <h1 class="page-title" id="storm-title"><span class="mark">STORM</span>: Soft Tactile Memory for Safe <span class="nowrap">Physical-AI</span> Correction of Robotic Foundation Models</h1>
+      <p class="page-intro">STORM will investigate how robots can use touch to detect unexpected physical changes and safely adjust their actions. By combining soft, fluid-filled tactile skin with adaptive AI, the project aims to let robots sense and remember contact, recognise risks such as a slipping object, and correct their movements, or stop when uncertainty is too high. It is funded by Independent Research Fund Denmark and begins on 1&nbsp;March&nbsp;2027 as a collaboration between Aarhus University and the University of Southern Denmark.</p>
+      <div class="page-actions">
+        <a class="btn btn-primary" href="#video">Watch the video <span class="arrow" aria-hidden="true">&darr;</span></a>
+        <a class="btn btn-ghost" href="https://ingenioer.au.dk/aktuelt/nyheder/nyhed/artikel/ny-forskning-skal-laere-robotter-at-maerke-naar-noget-gaar-galt" hreflang="da" target="_blank" rel="noopener noreferrer">AU announcement</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video and project facts -->
+  <section class="wrap section section-after-hero" id="video" aria-label="STORM video and project facts">
+    <div class="flow">
+      <figure class="video-figure">
+        <div class="video-stage video-stage--large">
+          <video id="storm-video" controls playsinline preload="metadata" poster="media/storm/storm-poster.jpg" width="1080" height="1080" aria-label="STORM video">
+            <source src="media/storm/storm-animation-1080.mp4" type="video/mp4">
+            Your browser cannot play this video. The animation is also available as a file at <a href="media/storm/storm-animation-1080.mp4">storm-animation-1080.mp4</a>.
+          </video>
+        </div>
+        <div class="video-controls" hidden>
+          <button class="btn btn-ghost" type="button" id="storm-play" aria-controls="storm-video" aria-pressed="false">Play video</button>
+        </div>
+      </figure>
+
+      <dl class="facts" id="facts">
+        <div><dt>Funder</dt><dd>Independent Research Fund Denmark (DFF) <span class="muted"><span lang="da">Danmarks Frie Forskningsfond</span> &middot; Thematic Research &ndash; Research on Artificial Intelligence,&nbsp;2026</span></dd></div>
+        <div><dt>Principal Investigator</dt><dd>Behzad Bozorgtabar <span class="muted">Adaptive &amp; Agentic AI (A3) Lab, Department of Electrical and Computer Engineering, Aarhus University</span></dd></div>
+        <div><dt>Project co-PI</dt><dd>Professor Ahmad Rafsanjani <span class="muted">University of Southern Denmark (SDU)</span></dd></div>
+        <div><dt>Grant</dt><dd>DKK 7.2 million <span class="muted">in total across AU and SDU</span></dd></div>
+        <div><dt>Partners</dt><dd>University of Southern Denmark (SDU) <span class="muted">SDU Soft Robotics</span></dd></div>
+        <div><dt>Start</dt><dd>1 March 2027</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Problem and ambition -->
+  <section class="wrap section" id="about" aria-labelledby="about-title">
+    <div class="section-head">
+      <span class="eyebrow">Problem and ambition</span>
+      <h2 class="section-title" id="about-title">Why touch, and what STORM will do</h2>
+    </div>
+    <div class="grid-2 about-grid">
+      <div class="prose">
+        <h3>Why touch</h3>
+        <p>Robotic foundation models can already see, read and act. Yet much of what matters in manipulation is felt rather than seen. An object begins to slip, or a grasp lands differently from how it was planned, and a camera may show nothing unusual until the task has already failed. Touch is the sense that reveals when the physical world has stopped matching the robot&rsquo;s expectations.</p>
+        <p>STORM starts from this observation and asks how a robot can use touch to detect unexpected physical changes and adjust its actions safely, so that manipulation becomes more reliable under changing real-world conditions.</p>
+      </div>
+      <div class="prose">
+        <h3>What STORM will do</h3>
+        <p>The project will combine soft, fluid-filled tactile skin with adaptive AI that lets a robot sense contact and remember it. Every kind of touch leaves its own signature in the signals of the soft skin, and a memory of such signatures will tell the robot what contact to expect as it acts. When the contact it feels departs from what it expects, the robot will be able to recognise risks such as a slipping object and correct its movements, or stop when uncertainty is too high to continue safely.</p>
+        <p>STORM will study these stages of sensing, memory, risk assessment and correction together, with the goal of safer and more reliable robotic manipulation in changing real-world conditions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept illustration -->
+  <section class="wrap section" id="concept" aria-labelledby="concept-title">
+    <div class="section-head">
+      <span class="eyebrow">Concept</span>
+      <h2 class="section-title" id="concept-title">From sensing to safe correction</h2>
+      <p class="section-lead">What the project will study, from a soft skin that feels contact to an action that is corrected or stopped.</p>
+    </div>
+    <figure class="concept" aria-labelledby="concept-cap">
+      <ol class="pipeline">
+        <li class="step step--signal">
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 64" focusable="false">
+              <path class="c-node" d="M15 42h10c3 0 4.5 4 8 4s5-4 8-4h10a7 7 0 0 1 0 14H15a7 7 0 0 1 0-14z"/>
+              <path class="c-icon" d="M26 10c0-6 14-6 14 0v30c0 6-14 6-14 0z"/>
+              <path class="c-edge" d="M60 49h8"/>
+              <path class="c-signal" d="M68 49h10l4-16 4 16h26"/>
+              <circle class="c-dot-signal" cx="108" cy="49" r="2.5"/>
+            </svg>
+          </span>
+          <span class="step-num">1 &middot; Sensing</span>
+          <p class="step-title">Soft tactile skin turns touch into signals</p>
+          <p class="step-sub">Contact with the soft, fluid-filled skin is recorded as signals the robot can read.</p>
+        </li>
+        <li class="step step--signal">
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 64" focusable="false">
+              <rect class="c-node" x="6" y="12" width="32" height="40" rx="4"/>
+              <rect class="c-node" x="44" y="12" width="32" height="40" rx="4"/>
+              <rect class="c-node" x="82" y="12" width="32" height="40" rx="4"/>
+              <path class="c-signal" d="M10 40h6l3-12 3 12h12"/>
+              <path class="c-signal" d="M48 40h4l3-10 3 10 3-10 3 10h6"/>
+              <path class="c-signal" d="M86 40h4l2-14h14l2 14h4"/>
+            </svg>
+          </span>
+          <span class="step-num">2 &middot; Contact memory</span>
+          <p class="step-title">Touch signatures are stored and recalled</p>
+          <p class="step-sub">Each kind of touch leaves a signature, and a memory of past contact tells the robot what to expect next.</p>
+        </li>
+        <li class="step step--risk">
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 64" focusable="false">
+              <path class="c-edge" d="M8 56h104"/>
+              <path class="c-edge" d="M8 46c12 0 16-18 28-18s16 8 28 8 28 0 48 0" stroke-dasharray="4 3"/>
+              <path class="c-signal" d="M8 46c12 0 16-18 28-18 8 0 12 3 18 5"/>
+              <path class="c-risk" d="M54 33c8 3 14-15 26-15s18 6 30 6"/>
+              <circle class="c-dot-risk" cx="110" cy="24" r="2.5"/>
+            </svg>
+          </span>
+          <span class="step-num">3 &middot; Risk assessment</span>
+          <p class="step-title">Expected and felt contact are compared</p>
+          <p class="step-sub">A mismatch, such as an object beginning to slip, is a sign that reality has stopped matching the robot&rsquo;s expectation.</p>
+        </li>
+        <li class="step step--safe">
+          <span class="step-icon" aria-hidden="true">
+            <svg viewBox="0 0 120 64" focusable="false">
+              <path class="c-edge" d="M8 20h104" stroke-dasharray="2 4"/>
+              <path class="c-risk" d="M34 20c8 0 12-12 20-12"/>
+              <path class="c-safe" d="M54 8c10 0 14 12 24 12h30"/>
+              <circle class="c-dot-safe" cx="108" cy="20" r="2.5"/>
+              <path class="c-edge" d="M8 50h30" stroke-dasharray="2 4"/>
+              <path class="c-risk" d="M38 50c6 0 9-4 14-4"/>
+              <rect class="c-dot-safe" x="56" y="40" width="12" height="12" rx="2"/>
+            </svg>
+          </span>
+          <span class="step-num">4 &middot; Correction or stop</span>
+          <p class="step-title">The action is adjusted, or halted</p>
+          <p class="step-sub">The robot corrects its movement, or stops when uncertainty is too high to continue safely.</p>
+        </li>
+      </ol>
+      <figcaption id="concept-cap"><b>Concept, not architecture.</b> These four stages summarise the research ambition of the project; they are not an implemented system, a technical architecture or a result.</figcaption>
+    </figure>
+  </section>
+
+  <!-- Leadership and collaboration -->
+  <section class="wrap section" id="team" aria-labelledby="team-title">
+    <div class="section-head">
+      <span class="eyebrow">Team</span>
+      <h2 class="section-title" id="team-title">Leadership and collaboration</h2>
+    </div>
+    <div class="portrait-aside">
+      <figure>
+        <div class="portrait">
+          <img src="media/behzad-bozorgtabar-au.jpg" width="800" height="534" alt="Behzad Bozorgtabar leaning on a wooden railing in a bright corridor at Aarhus University.">
+        </div>
+        <figcaption>Behzad Bozorgtabar, Principal Investigator of STORM, at Aarhus University. Photo: Aarhus University.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>STORM is led from Aarhus University by <strong>Behzad Bozorgtabar</strong>, Principal Investigator, who heads the <a href="https://ece.au.dk/en/research/research-areas-department-of-electrical-and-computer-engineering-technical-sciences-aarhus-university/signal-processing-and-machine-learning/translate-to-english-research-groups-alt/adaptive-agentic-ai-a3-lab" target="_blank" rel="noopener noreferrer">Adaptive &amp; Agentic AI (A3) Lab</a> in the Department of Electrical and Computer Engineering. The project co-PI is <strong>Professor Ahmad Rafsanjani</strong> of the University of Southern Denmark (SDU), and the project&rsquo;s partners are SDU and SDU Soft Robotics.</p>
+        <p>The project is a collaboration between Aarhus University and the University of Southern Denmark, with the grant of DKK&nbsp;7.2&nbsp;million shared across the two universities. It will begin on 1&nbsp;March&nbsp;2027.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press and contact -->
+  <section class="wrap section" id="contact" aria-labelledby="contact-title">
+    <div class="section-head">
+      <span class="eyebrow">Press and contact</span>
+      <h2 class="section-title" id="contact-title">Announcement and contact</h2>
+    </div>
+    <div class="grid-2">
+      <div class="press-group" id="press">
+        <a class="press" href="https://ingenioer.au.dk/aktuelt/nyheder/nyhed/artikel/ny-forskning-skal-laere-robotter-at-maerke-naar-noget-gaar-galt" hreflang="da" target="_blank" rel="noopener noreferrer">
+          <span>
+            <span class="press-kicker">In the news &middot; Aarhus University</span>
+            <span class="press-title" lang="da">Ny forskning skal lære robotter at mærke, når noget går galt</span>
+            <span class="press-meta">ingenioer.au.dk &middot; in Danish</span>
+          </span>
+          <span class="press-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <p class="press-alt">English version: <a href="https://ingenioer.au.dk/en/current/news/view/artikel/a-sense-of-touch-could-help-robots-handle-the-unexpected" hreflang="en" target="_blank" rel="noopener noreferrer">A sense of touch could help robots handle the unexpected</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>Academic contact</h3>
+        <p><strong>Behzad Bozorgtabar</strong>, Associate Professor, Department of Electrical and Computer Engineering, Aarhus University</p>
+        <p><a href="mailto:behzad@ece.au.dk">behzad@ece.au.dk</a></p>
+        <p class="contact-back"><a href="index.html">Back to homepage</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="colophon">&copy; <span id="yr">2026</span> Behzad Bozorgtabar &middot; Updated October 2026</p>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="storm.html" aria-current="page">STORM</a></li>
+      <li><a href="https://scholar.google.com/citations?user=kxAk6AoAAAAJ">Google Scholar</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+<script src="storm.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* ============================================================================
+   homepage.css — rules used only by index.html
+   Loaded after site.css (the shared design system). Everything here either
+   extends a shared component for the homepage or styles a homepage-only block.
+   ============================================================================ */
+
+/* 1. Anchors clear the sticky navigation (scroll-padding-top in site.css is the
+      fallback; scroll-margin-top is set on the targets themselves). */
+.section, .theme, .pub { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+/* 2. Hero: the portrait frame sits inside the figure so the credit can hang below it. */
+.hero-media { min-width: 0; }
+.photo-credit { margin: var(--s-2) 0 0; font-size: var(--fs-xs); color: var(--text-3); text-align: right; letter-spacing: .01em; }
+
+/* 3. About: running text beside a compact list of appointments. */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: start; }
+.roles { padding-top: .35rem; }
+.roles-title { margin: 0 0 var(--s-3); font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--text-3); }
+.roles-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.roles-list li { display: grid; gap: 2px; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); font-size: var(--fs-sm); line-height: 1.45; }
+.role-what { color: var(--text-1); font-weight: 500; }
+.role-where { color: var(--text-3); }
+.role-where a { color: var(--text-2); text-decoration-color: var(--line-strong); }
+.role-where a:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
+
+/* 4. Research themes: four representative papers sit in a 2 × 2 grid on wide screens
+      (the shared auto-fill grid would leave one card orphaned on a third row), and the
+      fourth theme shows the STORM project card instead of papers. */
+@media (min-width: 900px) {
+  .theme-papers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mini { grid-template-columns: 128px minmax(0, 1fr); }
+  .mini-project { grid-column: 1 / -1; grid-template-columns: 168px minmax(0, 1fr); align-items: center; }
+}
+.mini-project .thumb { display: block; aspect-ratio: 1 / 1; overflow: hidden; align-self: start; border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--stage); }
+.mini-project .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mini-kicker { margin: 0 0 var(--s-1); font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+/* 5. News archive: small year headings between the archived lists. */
+.news-year { margin: var(--s-6) 0 var(--s-2); font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--text-3); }
+.news-archive > summary + .news-year { margin-top: var(--s-2); }
+
+/* 6. Publications. Until site.js has run (html.js-ready) the toolbar is hidden and every
+      entry is visible, so a missing or blocked script can never hide papers; once it runs,
+      the default view is the selected set and site.js manages .pub-hidden. */
+html:not(.js-ready) .pub-toolbar { display: none; }
+html.js-ready .pub-list[data-view="selected"] .pub:not(.pub-selected) { display: none; }
+.pub-reset { appearance: none; padding: 0; border: 0; background: none; font: inherit; color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-line); text-underline-offset: .18em; cursor: pointer; }
+.pub-reset:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
+.pub-note { margin: var(--s-3) 0 0; font-size: var(--fs-xs); color: var(--text-3); }
+.pub-status { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-4); margin-top: var(--s-1); }
+.pub-count { margin-top: 0; }
+.pub-reset-inline { font-size: var(--fs-sm); min-height: 0; }
+.pub-reset-inline[hidden] { display: none; }
+
+/* 7. A3 Lab: alumni and academic friends sit below the band, on the band's own
+      column grid and inner padding so the two lists line up with it. */
+.people-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 4vw, 4rem); margin-top: var(--s-6); padding: 0 clamp(1.5rem, 1rem + 2vw, 2.5rem); }
+.people-grid .people-group:first-child { margin-top: 0; }
+
+/* 8. Contact: four cards as 2 × 2 on wide screens (the auto-fit grid would squeeze the
+      e-mail addresses), with the profile list inside its card. */
+@media (min-width: 769px) { .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.contact-card a { overflow-wrap: anywhere; }
+.contact-links { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .35rem .9rem; }
+.contact-links a { text-decoration-color: var(--line-strong); }
+.contact-links a:hover { text-decoration-color: currentColor; }
+
+/* 9. Footer: attribution line under the colophon row. */
+.footer-note { flex-basis: 100%; margin: 0; font-size: var(--fs-xs); color: var(--text-3); }
+
+/* 10. Responsive. */
+@media (max-width: 768px) {
+  .about, .people-grid { grid-template-columns: minmax(0, 1fr); }
+  .roles { padding-top: 0; }
+  .people-grid { gap: var(--s-6); }
+}

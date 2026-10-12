@@ -1,0 +1,53 @@
+/* ============================================================================
+   storm.css — page-only rules for storm.html
+   Everything shared lives in site.css (design director); this file only adds
+   the few refinements the project page needs. British spelling throughout.
+   ============================================================================ */
+
+/* Page hero: the section that follows it keeps a shorter top gap so the
+   video sits close to the title it illustrates. */
+.section-after-hero{padding-top:clamp(2rem,1rem + 3vw,3.5rem)}
+
+/* Hero: the in-page "Watch the video" arrow points down; the hyphenated
+   term in the title never breaks across lines. */
+.page-actions .arrow{display:inline-block}
+.page-actions .btn:hover .arrow{transform:translateY(2px)}
+.page-title{text-wrap:balance}
+.nowrap{white-space:nowrap}
+
+/* Video figure: the black 1:1 stage, the progressive play/pause control and a
+   visible caption, all centred on the 680 px stage width. */
+.video-figure{margin:0}
+.video-controls[hidden]{display:none}
+.video-caption{max-width:680px;margin:var(--s-4) auto 0;font-size:var(--fs-sm);line-height:1.5;color:var(--text-3);text-align:center}
+
+/* Facts: the qualifying line sits under the main value so each cell reads as
+   label, value, detail. */
+.facts dd .muted{display:block;margin-top:2px}
+
+/* Problem and ambition: two prose columns; the first heading in each column
+   starts flush with the top of the grid row. */
+.about-grid .prose > h3:first-child{margin-top:0}
+
+/* Team: the link row under the collaboration text. */
+
+/* Press: the Danish article card plus a line for the English version. */
+.press-group{display:flex;flex-direction:column;gap:var(--s-3)}
+.press-group .press{flex:1 1 auto}
+.press-alt{margin:0;padding-inline:var(--s-5);font-size:var(--fs-sm);line-height:1.5;color:var(--text-3)}
+
+/* Contact card: the homepage link sits a little apart from the e-mail. */
+.contact-card .contact-back{margin-top:var(--s-3)}
+
+/* ---------------------------------------------------------------------------
+   Responsive refinements (the shared breakpoints handle the layout itself:
+   facts 3/2/1 columns, pipeline 4 across then stacked with downward chevrons)
+   --------------------------------------------------------------------------- */
+@media (max-width:480px){
+  .video-caption{text-align:left}
+}
+
+/* Print: the stage is hidden by site.css; drop the dead caption and control too. */
+@media print{
+  .video-caption,.video-controls{display:none !important}
+}
