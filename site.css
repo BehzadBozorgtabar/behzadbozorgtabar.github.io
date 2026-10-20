@@ -11,46 +11,46 @@
    1. TOKENS
    ---------------------------------------------------------------------------- */
 :root{
-  color-scheme:dark;
+  color-scheme:light;
 
-  /* surfaces (warm-neutral near-black; 1–3 % lightness steps) */
-  --bg:#0a0a0b;            /* page */
-  --surface-1:#111113;     /* cards, panels, toolbar */
-  --surface-2:#17171a;     /* hover / raised */
-  --surface-3:#1e1e22;     /* diagram nodes, strongest fill */
+  /* surfaces (white page; cards and panels one or two steps darker) */
+  --bg:#ffffff;            /* page */
+  --surface-1:#f8f8f6;     /* cards, panels, toolbar */
+  --surface-2:#f0f0ed;     /* hover / raised */
+  --surface-3:#e8e8e4;     /* diagram nodes, strongest fill */
   --stage:#000;            /* video stage, flush with the STORM animation */
-  --nav-bg:rgba(10,10,11,.78);
-  --plate:#f5f4f0;         /* light plate for white-background figures and icons */
-  --plate-line:#dad8d1;
+  --nav-bg:rgba(255,255,255,.82);
+  --plate:#ffffff;         /* plate behind figures and icons */
+  --plate-line:rgba(0,0,0,.12);
 
   /* ink */
-  --text-1:#f2f1ec;        /* headings, primary */
-  --text-2:#b4b3ac;        /* body / secondary */
-  --text-3:#8c8b85;        /* muted, meta (4.86:1 on surface-3, AA) */
+  --text-1:#111111;        /* headings, primary */
+  --text-2:#333333;        /* body / secondary */
+  --text-3:#5c5c5c;        /* muted, meta (5.5:1 on surface-3, AA) */
 
   /* lines */
-  --line:rgba(255,255,255,.08);
-  --line-strong:rgba(255,255,255,.14);
+  --line:rgba(0,0,0,.09);
+  --line-strong:rgba(0,0,0,.16);
 
-  /* accent: sage, taken from the STORM animation keyword colour (#aeba6c) */
-  --accent:#b5bf75;
-  --accent-strong:#d2da95;
-  --accent-ink:#0a0a0b;    /* text on accent fills */
-  --accent-tint:rgba(181,191,117,.12);
-  --accent-line:rgba(181,191,117,.38);
+  /* accent: olive, a darkened version of the STORM animation keyword colour (#aeba6c) */
+  --accent:#596a12;
+  --accent-strong:#3f4c0a;
+  --accent-ink:#ffffff;    /* text on accent fills */
+  --accent-tint:rgba(89,106,18,.10);
+  --accent-line:rgba(89,106,18,.4);
 
   /* semantic colours for the STORM concept diagram only */
-  --signal:#9dbbd0;        /* tactile signal trace (light steel blue) */
-  --risk:#e07a70;          /* contact mismatch / risk */
-  --safe:#b5bf75;          /* safe correction (= accent) */
+  --signal:#2e6f8e;        /* tactile signal trace (steel blue) */
+  --risk:#b7372d;          /* contact mismatch / risk */
+  --safe:#596a12;          /* safe correction (= accent) */
 
   /* miscellanea category tints (hue at low alpha over surface-1) */
-  --tint-sage-fg:#c9d08f;  --tint-sage-bg:rgba(181,191,117,.10);  --tint-sage-line:rgba(181,191,117,.26);
-  --tint-sky-fg:#b4cde0;   --tint-sky-bg:rgba(157,187,208,.10);   --tint-sky-line:rgba(157,187,208,.26);
-  --tint-amber-fg:#e8c48a; --tint-amber-bg:rgba(226,179,107,.10); --tint-amber-line:rgba(226,179,107,.26);
-  --tint-rose-fg:#eab3b3;  --tint-rose-bg:rgba(227,154,154,.10);  --tint-rose-line:rgba(227,154,154,.26);
-  --tint-lilac-fg:#c9bde8; --tint-lilac-bg:rgba(184,169,224,.10); --tint-lilac-line:rgba(184,169,224,.26);
-  --tint-teal-fg:#a9d6cd;  --tint-teal-bg:rgba(120,180,170,.10);  --tint-teal-line:rgba(120,180,170,.26);
+  --tint-sage-fg:#4b5a0f;  --tint-sage-bg:rgba(89,106,18,.10);    --tint-sage-line:rgba(89,106,18,.30);
+  --tint-sky-fg:#2e5a74;   --tint-sky-bg:rgba(46,111,142,.10);    --tint-sky-line:rgba(46,111,142,.30);
+  --tint-amber-fg:#7d4e08; --tint-amber-bg:rgba(190,130,40,.12);  --tint-amber-line:rgba(190,130,40,.32);
+  --tint-rose-fg:#8f3535;  --tint-rose-bg:rgba(190,80,80,.10);    --tint-rose-line:rgba(190,80,80,.30);
+  --tint-lilac-fg:#54418f; --tint-lilac-bg:rgba(110,90,180,.10);  --tint-lilac-line:rgba(110,90,180,.30);
+  --tint-teal-fg:#1f6a5e;  --tint-teal-bg:rgba(40,140,125,.10);   --tint-teal-line:rgba(40,140,125,.30);
 
   /* type */
   --font-sans:"Inter Variable",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -73,9 +73,9 @@
 
   /* shape */
   --r-sm:6px; --r-md:10px; --r-lg:14px; --r-xl:20px; --r-pill:999px;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
-  --shadow-md:0 8px 24px -12px rgba(0,0,0,.6);
-  --shadow-lg:0 24px 60px -30px rgba(0,0,0,.8);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.08);
+  --shadow-md:0 8px 24px -12px rgba(0,0,0,.18);
+  --shadow-lg:0 24px 60px -30px rgba(0,0,0,.25);
 
   /* motion */
   --t-fast:160ms; --t-base:200ms; --t-slow:420ms;
@@ -85,14 +85,23 @@
   --maxw:1120px; --measure:68ch; --nav-h:60px;
 }
 
-/* Optional light theme: tokens only, no toggle is shipped (dark is the product). */
-[data-theme="light"]{
-  color-scheme:light;
-  --bg:#f7f6f2; --surface-1:#fdfcfa; --surface-2:#f1efe9; --surface-3:#e8e5dc; --nav-bg:rgba(247,246,242,.82);
-  --text-1:#15150f; --text-2:#45453d; --text-3:#6a6a61;
-  --line:rgba(0,0,0,.09); --line-strong:rgba(0,0,0,.16);
-  --accent:#596a12; --accent-strong:#3f4c0a; --accent-ink:#fff; --accent-tint:rgba(89,106,18,.10); --accent-line:rgba(89,106,18,.4);
-  --shadow-md:0 8px 24px -12px rgba(0,0,0,.25); --shadow-lg:0 24px 60px -30px rgba(0,0,0,.3);
+/* Optional dark theme (the October 2026 values): tokens only, no toggle is shipped.
+   To use it, add data-theme="dark" to the <html> element of a page. */
+[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0a0a0b; --surface-1:#111113; --surface-2:#17171a; --surface-3:#1e1e22; --nav-bg:rgba(10,10,11,.78);
+  --plate:#f5f4f0; --plate-line:#dad8d1;
+  --text-1:#f2f1ec; --text-2:#b4b3ac; --text-3:#8c8b85;
+  --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.14);
+  --accent:#b5bf75; --accent-strong:#d2da95; --accent-ink:#0a0a0b; --accent-tint:rgba(181,191,117,.12); --accent-line:rgba(181,191,117,.38);
+  --signal:#9dbbd0; --risk:#e07a70; --safe:#b5bf75;
+  --tint-sage-fg:#c9d08f;  --tint-sage-bg:rgba(181,191,117,.10);  --tint-sage-line:rgba(181,191,117,.26);
+  --tint-sky-fg:#b4cde0;   --tint-sky-bg:rgba(157,187,208,.10);   --tint-sky-line:rgba(157,187,208,.26);
+  --tint-amber-fg:#e8c48a; --tint-amber-bg:rgba(226,179,107,.10); --tint-amber-line:rgba(226,179,107,.26);
+  --tint-rose-fg:#eab3b3;  --tint-rose-bg:rgba(227,154,154,.10);  --tint-rose-line:rgba(227,154,154,.26);
+  --tint-lilac-fg:#c9bde8; --tint-lilac-bg:rgba(184,169,224,.10); --tint-lilac-line:rgba(184,169,224,.26);
+  --tint-teal-fg:#a9d6cd;  --tint-teal-bg:rgba(120,180,170,.10);  --tint-teal-line:rgba(120,180,170,.26);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-md:0 8px 24px -12px rgba(0,0,0,.6); --shadow-lg:0 24px 60px -30px rgba(0,0,0,.8);
 }
 
 /* ----------------------------------------------------------------------------
